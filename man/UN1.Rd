@@ -1,0 +1,35 @@
+\name{UN1}
+\alias{UN1}
+\non_function{}
+\docType{data}
+\title{ National statistics from the United Nations }
+\usage{data(UN)}
+\description{
+Demographic data for 193
+places, mostly UN members, but also other areas like Hong Kong that are not
+independent countries.
+}
+\format{
+  This data frame contains the following columns:
+  \describe{
+    \item{Locality}{Locality name.  In some cases, the geographic area is
+    smaller than a country; for example, Hong Kong}
+    \item{Fertility}{Expected number of live births per female, 2000}
+    \item{PPgdp}{Per capita 2001 GDP, in US \$}
+  }
+}
+\details{
+ These data were collected at published by the UN from a variety of sources.
+ See original source for additional footnotes concerning values for
+ individual countries.  Country names are given in the first column of the
+ data file.
+}
+\source{
+ \url{http://unstats.un.org/unsd/demographic}
+}
+\references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 1.3.
+}
+\examples{
+data(UN1)
+}
+\keyword{datasets}

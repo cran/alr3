@@ -1,0 +1,28 @@
+\name{brains}
+\alias{brains}
+\docType{data}
+\non_function{}
+\title{Mammal brain weights}
+\description{
+The data provided gives the average body weight in kilograms and the average brain weight in grams for sixty-two species of mammals.}
+
+\format{This data frame contains the following columns:
+ \describe{
+    \item{Case.names}{
+Species name. 
+    }
+    \item{BrainWt}{
+Brain weight, grams 
+    }
+    \item{BodyWt}{
+Body weight, kg 
+    }
+ }
+}
+
+\source{Allison, T. and Cicchetti, D. (1976). Sleep in mammals: Ecology and constitutional correlates. \emph{Science}, 194, 732-734.}
+\references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition.  New York: Wiley, Section 7.1.}
+\examples{
+data(brains)
+}
+\keyword{datasets}
