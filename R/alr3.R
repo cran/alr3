@@ -20,9 +20,10 @@ sigma.hat.glm <- function(object){sqrt(summary(object)$dispersion)}
 conf.intervals <- function(object,level=.95,f=qnorm((1-level)/2))
    {UseMethod("conf.intervals")}
 conf.intervals.default <- function(object,level=.95,f=qnorm((1-level)/2)) {
-  ans <- cbind(coef(object),
-   coef(object) + f * sqrt(diag(vcov(object))),
-   coef(object) - f * sqrt(diag(vcov(object))))
+  a1 <- summary(object)$coefficients
+  ans <- cbind(a1[,1],
+               a1[,1] + f * a1[,2],
+               a1[,1] - f * a1[,2])
   dimnames(ans)[[2]] <- c("Coef est", "Lower", "Upper")
   ans}
 conf.intervals.lm <- function(object,level=.95,f=qt((1-level)/2,object$df.residual)){
@@ -123,9 +124,10 @@ delta.method.default<-function(object, g, parameter.prefix="b",print=TRUE)
    if(!is.character(g)) stop("function argument must be a string")
    g<-parse(text=g)
 # variance of estimated parameters
-   V <- vcov(object)        # vcov is in R base, in alr3 for S-Plus
-   para.val<-coef(object)   # values of coef estimates
-   q<-length(para.val)      # number of coef estimates
+   s1 <- summary(object)
+   V <- s1$sigma * s1$cov.unscaled  # vcov is in R base, in alr3 for S-Plus
+   para.val<-s1$coef[,1]            # values of coef estimates
+   q<-length(para.val)              # number of coef estimates
    para.name<-paste(parameter.prefix,0:(q-1),sep="") #coef names
    compute.delta.method(V,g,para.val,para.name,print)}
    
@@ -175,7 +177,7 @@ pod.lm <- function(x,group,mean.function,control,...) {
  call[[1]] <- as.name("pod")
  if(!missing(group)) call$group <- as.name(as.character(substitute(group)))
  if(!missing(mean.function)) call$mean.function <- 
-     as.name(as.character(substitute(mean.function)))
+     as.character(substitute(mean.function))
  if(!missing(control)) call$control <- 
      as.name(as.character(substitute(control)))
  eval(call)}
@@ -221,8 +223,10 @@ function (formula, data=sys.parent(), group, subset, weights=NULL, na.action,
     l<-nlevels(g) 
     cl <- call
     cl$group <- cl$mean.function <- NULL
-    cl[[1]] <- as.name("lm")
+    cl[[1]] <- as.name("lm") 
     fit1 <- eval(cl)
+    if(fit1$rank != length(fit1$coef))
+     stop("Predictors are linearly related.  Try again after deleting predictors.")
     coef1 <- coef(fit1)
     p1 <- predict(fit1) - coef(fit1)[1]
 # If subset is not NULL, find the subscripts of the cases used:

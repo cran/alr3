@@ -112,7 +112,8 @@ specified.}
 Suppose we start with a linear mean function specified by \code{y~x1+x2+x3}, where the
 right-side variables can be any valid R variables, such as transformations, but NOT
 factors or interactions (if you want to include these, you need to create the
-dummy variables yourself).  We also specify a grouping variable z with, say, g levels.  Let 
+dummy variables yourself).  The right-hand side variables must also be linearly
+independent.  We also specify a grouping variable z with, say, g levels.  Let 
 \eqn{G_i}{Gi} be a dummy variable with values equal to 1 when \eqn{z=i}, and 
 zero otherwise.  The pod mean function is then has the nonlinear mean function
 \deqn{E(y|x,z) = \beta_0+\beta'x + \sum_{j=2}^g G_j(\theta_{0j}+\theta_{ij}\beta'x)}{

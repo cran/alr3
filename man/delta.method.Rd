@@ -38,12 +38,22 @@ compute.delta.method(Var, g, values, para.name, print=TRUE)
 error of a nonlinear function of parameter estimates.  Suppose the names of
 the parameters are \dQuote{b0}, \dQuote{b1},...,\dQuote{bp}, as would be the
 case for an object of type \code{lm} or \code{glm} with parameter.prefix
-left at its default value of \dQuote{b}.
+left at its default value of \dQuote{b}.  In this case, \dQuote{b0} is the 
+intercept (if the model has no intercept, then the numbering of the 
+parameters starts with 1, not 0), \dQuote{b1} is the first estimated parameter
+after the intercept, and so on.  If any terms in the model are exact linear
+combinations of previous terms, they are skipped in assigning names to 
+parameters.  For example, if you have predictors X1, X2, X3=X1+X2 and X4, and
+you fit the model \code{y~X1+X2+X3+X4}, a coefficient will not be estimated for
+X3 because it is a linear combination of terms to its left in the model 
+statement.  In this case, \dQuote{b0} is the intercept, \dQuote{b1} is the 
+coefficient for X1, \dQuote{b2} the coefficient for X2, and \dQuote{b3} the
+coefficient for X4 (not for X3, as it is not estimable).
 
 If the value of \code{g} were
 \code{"(b2+b6*350)/(4*b4)"}, then the function delta.method would extract
 the coefficient estimates from \code{object}, and the covariance matrix from
-\code{object}, and  pass them to \code{compute.delta.method}.
+\code{object}, and  pass them to \code{compute.delta.method}.  
 
 For compute.delta.method, the vector values of length \eqn{p}{p} has estimated
 covariance matrix \eqn{V}{V}, a \eqn{p\times p}{p by} p matrix.  \code{g} 
