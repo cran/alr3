@@ -2,6 +2,7 @@
 \alias{ufc}
 \alias{ufcgf}
 \alias{ufcwc}
+\alias{ufcdf}
 \docType{data}
 \title{Height-diameter data for Upper Flat Creek, Idaho}
 \description{

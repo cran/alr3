@@ -25,7 +25,7 @@ conf.intervals.default <- function(object,level=.95,f=qnorm((1-level)/2)) {
    coef(object) - f * sqrt(diag(vcov(object))))
   dimnames(ans)[[2]] <- c("Coef est", "Lower", "Upper")
   ans}
-conf.intervals.lm <- function(object,level=.95,f=qt((1-level)/2,object$df)){
+conf.intervals.lm <- function(object,level=.95,f=qt((1-level)/2,object$df.residual)){
  conf.intervals.default(object,alpha,f)}
  
 #######################################################################
@@ -59,7 +59,7 @@ boot.case.default <- function (object, f=coef, B = 999)
             coef.boot <- rbind(coef.boot, f(obj.nl))
         }
         else {
-            if (class(obj.nl) != "try-error") {
+            if (class(obj.nl)[1] != "try-error") {
                 count.error <- 0
                 i <- i + 1
                 coef.boot <- rbind(coef.boot, f(obj.nl))
@@ -111,10 +111,11 @@ random.lin.comb.lm <- function(X,...) {
 # Chapter 6  Delta Method
 ###########################################################################
 
-delta.method <- function(object,g,parameter.prefix="b"){UseMethod("delta.method")}
+delta.method <- function(object,g,parameter.prefix="b",print=TRUE)
+  {UseMethod("delta.method")}
 
 ### lm, glm, and others with unnamed parameters:
-delta.method.default<-function(object, g, parameter.prefix="b")
+delta.method.default<-function(object, g, parameter.prefix="b",print=TRUE)
 {
    if(!is.character(g)) stop("function argument must be a string")
    g<-parse(text=g)
@@ -123,15 +124,16 @@ delta.method.default<-function(object, g, parameter.prefix="b")
    para.val<-coef(object)   # values of coef estimates
    q<-length(para.val)      # number of coef estimates
    para.name<-paste(parameter.prefix,0:(q-1),sep="") #coef names
-   compute.delta.method(V,g,para.val,para.name)}
+   compute.delta.method(V,g,para.val,para.name,print)}
    
-# nls has named parameters
-delta.method.nls<-function(object, g, ...)
+# nls has named parameters so parameter.prefix is ignored
+delta.method.nls<-function(object, g, parameter.prefix=NULL,print, ...)
 {
    if(!is.character(g)) stop("function argument must be a string")
    g<-parse(text=g)
    V<-vcov(object)  # variance of estimated parameters
-   compute.delta.method(V,g,coef(object),names(coef(object)))}
+   compute.delta.method(V,g,coef(object),names(coef(object)),
+       print=print)}
    
 # computes g evaluated at the data, and t(g')Vt(g'), the estimated
 # standard error
@@ -176,7 +178,7 @@ pod.lm <- function(x,group,mean.function,control,...) {
  eval(call)}
 
 pod.formula <-
-function (formula, data=sys.parent(), group, subset, weights, na.action, 
+function (formula, data=sys.parent(), group, subset, weights=NULL, na.action, 
     mean.function=c("pod","common","parallel","general"),
     singular.ok = FALSE, contrasts = NULL, offset, control=nls.control(), ...) 
 { 
@@ -273,7 +275,13 @@ function (formula, data=sys.parent(), group, subset, weights, na.action,
       form2<-paste(form2, "+", G, "* (", th0, "+", th1, "* (", form1, "))") 
       para.name<-c(para.name, c(th0, th1))
    } 
-   form<-as.formula(paste(y.name, "~", form2))
+# New June 6, 2005
+   if (is.null(weights))
+      {form<-as.formula(paste(y.name, "~", form2))} else
+      {wts <- substitute(weights)
+       form<-as.formula(paste("sqrt(",wts,")*",y.name,"~",
+             "sqrt(",wts,")*(",form2,")", sep=""))}
+# End change
    start <- c(coef2[1],coef2[2]*coef1[-1],coef2[3:(l+1)],
                 coef2[(l+2):(2*l)]/coef2[2])
    names(start) <- c(paste("eta",0:(length(x.name)),sep=""),

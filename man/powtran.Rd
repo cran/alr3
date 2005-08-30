@@ -14,8 +14,15 @@ The family can be modified to have Jacobian one, or not, except for the basic
 power family.
 }
 \usage{
-powtran(U, lambda,family=\dQuote{box.cox},modified=TRUE)
-powtran(U, lambda=U\$lambda, family=U\$family,modified=FALSE)
+powtran(U, lambda,family,modified)
+
+powtran.default(U, lambda,family="box.cox",modified=TRUE)
+
+powtran.bctrans(U, lambda=coef(U), family=U$family,modified=FALSE)
+
+powtran.matrix(U, lambda, family="power",modified=FALSE)
+
+powtran.data.frame(U, lambda, family="power",modified=FALSE)
 }
 
 \arguments{

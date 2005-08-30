@@ -17,7 +17,7 @@ is Tukey's test for nonadditivity when plotting against fitted values.
 residual.plots (m, ...)
 
 ### When the first argument is a linear model (of class lm), the form of the
-function is
+### function is
 
 residual.plots.lm(m,tukey=TRUE,exclude=NULL,plot=TRUE,
      layout=NULL,ask,...)

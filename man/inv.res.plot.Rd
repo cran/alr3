@@ -10,14 +10,14 @@ vertical axis and the fitted values \eqn{\hat{Y}}{Yhat}
 on the horizontal axis.  Uses \code{nls} to
 estimate  \eqn{\lambda}{lambda} in the function 
 \eqn{\hat{Y}=b_0+b_1Y^{\lambda}}{Yhat = b0 + b1(Y)^(lambda)}.
-Adds the fitted curve to the plot.
+Adds the fitted curve to the plot. 
+inv.res.plot is an alias for inverse.response.plot.
 }
 \usage{
 inverse.response.plot(m, lambda=c(0,1),maxiter=100,xlab=NULL,...)
 
 %inverse.response.plot.formula(m, data, subset, na.action,...)
 
-inv.res.plot is an alias for inverse.response.plot.
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -8,13 +8,10 @@ leverages, Studentized residuals and outlier significance levels for a
 regression object.
 }
 \usage{
-inf.index (m, cooks.distance = TRUE, rstudent = TRUE, outlier.t. test = TRUE, 
-    leverages = TRUE, ...) 
-    
 inf.index(m,cooks.distance,rstudent,outlier.t.test,leverages,...)
 
-inf.index.lm(m,cooks.distance=TRUE,rstudent=TRUE,
-                           outlier.t.test=TRUE,leverages=TRUE,...)
+inf.index.lm (m, cooks.distance = TRUE, rstudent = TRUE, 
+    outlier.t.test = TRUE, leverages = TRUE, ...) 
 }
 \arguments{
   \item{m}{A regression object}

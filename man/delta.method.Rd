@@ -12,7 +12,7 @@ standard error for a nonlinear function of a vector of random variables
 with known or estimated covariance matrix.
 }
 \usage{
-delta.method(object, g, parameter.prefix="b")
+delta.method(object, g, parameter.prefix="b",print=TRUE)
 compute.delta.method(Var, g, values, para.name, print=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.

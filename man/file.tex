@@ -1,0 +1,37 @@
+\Header{sigma.hat}{Return the scale estimate for a regression model}
+\methalias{sigma.hat.default}{sigma.hat}
+\methalias{sigma.hat.glm}{sigma.hat}
+\keyword{regression}{sigma.hat}
+\begin{Description}\relax
+This function provides a consistent method to return the estimated scale
+from a linear, generalized linear, nonlinear, or other model.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+sigma.hat(object)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{object}] A regression object of type lm, glm or nls
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+For an lm or nls object, the returned quantity is the square root of the
+estimate of \eqn{\sigma}{sigma}.  For a glm object, the returned quantity is
+the square root of the estimated dispersion parameter.
+\end{Details}
+\begin{Value}
+A nonnegative number
+\end{Value}
+\begin{Author}\relax
+Sanford Weisberg, \email{sandy@stat.umn.edu}
+\end{Author}
+\begin{Examples}
+\begin{ExampleCode}
+data(forbes)
+m1 <- lm(Lpres ~ Temp, data=forbes)
+sigma.hat(m1)
+\end{ExampleCode}
+\end{Examples}
+
