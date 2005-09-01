@@ -38,9 +38,12 @@ conf.intervals.lm <- function(object,level=.95,f=qt((1-level)/2,object$df.residu
 next.boot <- function(object,sample){UseMethod("next.boot")}
 next.boot.default <- function(object,sample){ 
    assign("boot.sample",sample,inherits=TRUE)
-   update(object,subset=boot.sample)}
+# next line assures resampling only rows in the original subset 9/1/2005
+   update(object,data=model.frame(object),subset=boot.sample)}
 next.boot.nls <- function(object,sample){
-   update(object,subset=sample,start=coef(object))}
+# modify to assure resampling only rows in the original subset 9/1/2005
+   update(object,subset=sample,start=coef(object),
+    data=data.frame(update(object,model=TRUE)$model))}
 
 boot.case <- function(object, f=coef, B=999){UseMethod("boot.case")}
 boot.case.default <- function (object, f=coef, B = 999) 
