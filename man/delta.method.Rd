@@ -2,6 +2,7 @@
 \alias{delta.method}
 \alias{delta.method.default}
 \alias{delta.method.nls}
+\alias{delta.method.drc}
 \alias{compute.delta.method}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Standard error of a nonlinear function of regression 
@@ -53,7 +54,11 @@ coefficient for X4 (not for X3, as it is not estimable).
 If the value of \code{g} were
 \code{"(b2+b6*350)/(4*b4)"}, then the function delta.method would extract
 the coefficient estimates from \code{object}, and the covariance matrix from
-\code{object}, and  pass them to \code{compute.delta.method}.  
+\code{object}, and  pass them to \code{compute.delta.method}. 
+
+For objects of calss \code{drc}, created using the \code{drc} library, the 
+parameter names are given by  \dQuote{b1},...,\dQuote{bp}, from left to right.
+The parameter names in the \code{drc} object are not used.
 
 For compute.delta.method, the vector values of length \eqn{p}{p} has estimated
 covariance matrix \eqn{V}{V}, a \eqn{p\times p}{p by} p matrix.  \code{g} 

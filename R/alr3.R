@@ -132,13 +132,26 @@ delta.method.default<-function(object, g, parameter.prefix="b",print=TRUE)
    compute.delta.method(V,g,para.val,para.name,print)}
    
 # nls has named parameters so parameter.prefix is ignored
-delta.method.nls<-function(object, g, parameter.prefix=NULL,print, ...)
+delta.method.nls<-function(object, g, parameter.prefix=NULL,print=TRUE, ...)
 {
    if(!is.character(g)) stop("function argument must be a string")
    g<-parse(text=g)
    V<-vcov(object)  # variance of estimated parameters
    compute.delta.method(V,g,coef(object),names(coef(object)),
        print=print)}
+       
+delta.method.drc<-function(object, g, parameter.prefix="b",print=TRUE, ...)
+{
+   if(!is.character(g)) stop("function argument must be a string")
+   g<-parse(text=g)
+# variance of estimated parameters
+   s1 <- summary(object)
+   V <- vcov(object)  
+   para.val<-coef(object)           # values of coef estimates
+   q<-length(para.val)              # number of coef estimates
+   para.name<-paste(parameter.prefix,1:q,sep="") #coef names
+   names(para.val) <- para.name
+   compute.delta.method(V,g,para.val,para.name,print)}
    
 # computes g evaluated at the data, and t(g')Vt(g'), the estimated
 # standard error
