@@ -1,15 +1,24 @@
 \name{pure.error.anova}
 \alias{pure.error.anova}
+\alias{pure.error.anova.lm}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Pure Error analysis of variance }
 \description{
-  For a linear model object of type \code{lm}, finds the sum of squares for lack of fit 
+For a linear model object, finds the sum of squares for lack of fit 
 and the sum of squares for pure error.  These are added to the standard anova table
 to give a test for lack of fit.  If there is no pure error, then the regular anova
 table is returned.
 }
 \usage{
+### This is a generic function.  
+
 pure.error.anova(mod)
+
+### When the first argument is a model of class lm,
+
+pure.error.anova.lm(mod)
+
+### Methods for other than models for type lm have not been defined.
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

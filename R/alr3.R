@@ -83,18 +83,30 @@ boot.case.default <- function (object, f=coef, B = 999)
 ###########################################################################
 # Chapter 5  Pure error anova
 ###########################################################################
-pure.error.anova <- function(mod) {
- if (!(class(mod) == "lm")) stop("Pure error for lm objects only")
+# completely rewritten 2/24/2006
+pure.error.anova <- function(mod){UseMethod("pure.error.anova")}
+pure.error.anova.lm <- function(mod) {
  if (is.null(mod$model)) mod <- update(mod,model=TRUE)
- #save.seed <- .Random.seed  # keep the current random number seed
- p <- dim(m1$model)[2] -1
+ p <- dim(mod$model)[2] -1
  mod$model$Lack.of.Fit <- 
    factor(random.lin.comb(model.matrix(mod),101319853))
+ aov1 <- anova(mod)
  #set.seed(save.seed) # restore random number seed
  if (length(levels(mod$model$Lack.of.Fit)) == length(mod$model$Lack.of.Fit)) 
-  anova(mod) else {
-  anova(update(mod, ~.+Lack.of.Fit,data=mod$model,singular.ok=TRUE))}
- }
+  aov1 else {
+  aov2 <- anova(lm(mod$model[,1]~mod$model$Lack.of.Fit,weights=weights(mod)))
+  rrow <- dim(aov1)[1]
+  aov2[1,1] <- aov1[rrow,1]-aov2[2,1]
+  aov2[1,2] <- aov1[rrow,2]-aov2[2,2]
+  aov2[1,3] <- aov2[1,2]/aov2[1,1]
+  aov1[1:(rrow-1),4] <- aov1[1:(rrow-1),3]/aov2[2,3]
+  aov2[1,4] <- aov2[1,3]/aov2[2,3]
+  row.names(aov2) <- c(" Lack of fit"," Pure Error")
+  aov <- rbind(aov1,aov2)
+  aov[,5] <- pf(aov[,4],aov[,1],aov2[2,1],lower.tail=FALSE)
+  aov
+  }}
+
  
 random.lin.comb <- function(X,seed=NULL) {UseMethod("random.lin.comb")}
 
