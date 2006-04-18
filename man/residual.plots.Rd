@@ -25,7 +25,8 @@ residual.plots.lm(m,tukey=TRUE,exclude=NULL,plot=TRUE,
 ### The following are three related functions:    
 
 resplot(m,varname="tukey",type="pearson",
-                    plot=TRUE,add.quadratic=TRUE,...)
+                    plot=TRUE,add.quadratic=TRUE,
+                    ylab=paste(string.capitalize(type),"Residuals"),...)
                     
 resid.curv.test(m,varname)
 
@@ -51,6 +52,7 @@ tukey.nonadd.test(m)
   \item{type}{Type of residuals to be used.  Pearson residuals are 
   appropriate for \code{lm} objects since there are equivalent to ordinary residuals
   with ols and correctly weighted residuals with wls.}
+  \item{ylab} {Label for the yaxis.  The default is the residual type.}
   \item{add.quadratic}{if TRUE, fits the quadratic regression of the
   vertical axis on the  horizontal axis.}
   \item{plot}{If TRUE, draw the plot(s).}

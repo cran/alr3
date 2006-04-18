@@ -1,5 +1,18 @@
 #  R version of the alr3 package
 
+# function to access web info, modelled after the "UsingR" function
+# in the UsingR library
+alrweb <-
+function (what = c("webpage", "errata", "primer")) 
+{
+    what = match.arg(what)
+    urls = c(webpage = "http://www.stat.umn.edu/alr/", 
+        errata = "http://www.stat.umn.edu/alr/Links/errata.pdf", 
+        primer = "http://www.stat.umn.edu/alr/Links/RSprimer.pdf")
+    url = urls[what]
+    browseURL(url)
+}
+
 #######################################################################
 # Chapter 2
 #######################################################################
@@ -804,7 +817,8 @@ tukey.nonadd.test <- function(m){
    }
   
 resplot <- function(m,varname="tukey",type="pearson",
-                    plot=TRUE,add.quadratic=TRUE,...){
+                    plot=TRUE,add.quadratic=TRUE,
+                    ylab=paste(string.capitalize(type),"Residuals"),...){
  string.capitalize <- function(string) {
      paste(toupper(substring(string,1,1)),substring(string,2),sep="")}
  col <- match(varname,names(m$model))
@@ -814,8 +828,7 @@ resplot <- function(m,varname="tukey",type="pearson",
  
  lab <- if(varname == "tukey") {"Fitted values"} else varname
  if(plot==TRUE){ 
-  plot(horiz,residuals(m,type=type),xlab=lab,
-            ylab=paste(string.capitalize(type),"Residuals",...))
+  plot(horiz,residuals(m,type=type),xlab=lab,ylab=ylab,...)
   abline(h=0,lty=2)
   if(class(horiz) != "factor") {
     if(add.quadratic==TRUE){
