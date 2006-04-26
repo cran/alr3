@@ -149,9 +149,8 @@ delta.method.default<-function(object, g, parameter.prefix="b",print=TRUE)
    if(!is.character(g)) stop("function argument must be a string")
    g<-parse(text=g)
 # variance of estimated parameters
-   s1 <- summary(object)
-   V <- s1$sigma * s1$cov.unscaled  # vcov is in R base, in alr3 for S-Plus
-   para.val<-s1$coef[,1]            # values of coef estimates
+   V <- vcov(object)               # vcov is in R base, in alr3 for S-Plus
+   para.val <- coef(object)        # values of coef estimates
    q<-length(para.val)              # number of coef estimates
    para.name<-paste(parameter.prefix,0:(q-1),sep="") #coef names
    compute.delta.method(V,g,para.val,para.name,print)}
