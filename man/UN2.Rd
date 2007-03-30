@@ -3,7 +3,7 @@
 \non_function{}
 \docType{data}
 \title{ National statistics from the United Nations }
-\usage{data(UN)}
+\usage{data(UN2)}
 \description{
 National health, welfare, and education statistics for 193
 places, mostly UN members, but also other areas like Hong Kong that are not

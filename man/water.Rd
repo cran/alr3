@@ -20,25 +20,25 @@ at a site near Bishop, California.
  collection year
     }
     \item{APMAM}{
- Snowfall measurement site
+ Snowfall in inches measurement site
     }
     \item{APSAB}{
- Snowfall measurement site
+ Snowfall in inches measurement site
     }
     \item{APSLAKE}{
- Snowfall measurement site
+ Snowfall in inches measurement site
     }
     \item{OPBPC}{
- Snowfall measurement site
+ Snowfall in inches measurement site
     }
     \item{OPRC}{
- Snowfall measurement site
+ Snowfall in inches measurement site
     }
     \item{OPSLAKE}{
- Snowfall measurement site
+ Snowfall in inches measurement site
     }
     \item{BSAAM}{
- Stream runoff near Bishop, CA
+ Stream runoff near Bishop, CA, in acre-feet
     }
  }
 }

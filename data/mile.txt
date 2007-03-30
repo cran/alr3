@@ -16,16 +16,16 @@ Year Time Name Country Place Gender
 1913 254.40 "John Paul Jones" "USA" "Cambridge MA" Male
 1915 252.60 "Norman Taber" "USA" "Cambridge MA" Male
 1923 250.40 "Paavo Nurmi" "FIN" "Stockholm" Male
-1931 249.20 "Jules Ladoumègue" "FRA" "Paris" Male
+1931 249.20 "Jules Ladoumegue" "FRA" "Paris" Male
 1933 247.60 "Jack Lovelock" "NZL" "Princeton NJ" Male
 1934 246.80 "Glenn Cunningham" "USA" "Princeton NJ" Male
 1937 246.40 "Sydney Wooderson" "GBR" "Motspur Park" Male
-1942 246.20 "Gunder Hägg" "SWE" "Göteborg" Male
+1942 246.20 "Gunder Hagg" "SWE" "Goteborg" Male
 1942 246.20 "Arne Andersson" "SWE" "Stockholm" Male
-1942 244.60 "Gunder Hägg" "SWE" "Stockholm" Male
-1943 242.60 "Arne Andersson" "SWE" "Göteborg" Male
-1944 241.60 "Arne Andersson" "SWE" "Malmö" Male
-1945 241.40 "Gunder Hägg" "SWE" "Malmö" Male
+1942 244.60 "Gunder Hagg" "SWE" "Stockholm" Male
+1943 242.60 "Arne Andersson" "SWE" "Goteborg" Male
+1944 241.60 "Arne Andersson" "SWE" "Malmo" Male
+1945 241.40 "Gunder Hagg" "SWE" "Malmo" Male
 1954 239.40 "Roger Bannister" "GBR" "Oxford" Male
 1954 238.00 "John Paul Landy" "AUS" "Turku" Male
 1957 237.20 "Derek Ibbotson" "GBR" "London" Male
@@ -36,10 +36,10 @@ Year Time Name Country Place Gender
 1966 231.30 "Jim Ryun" "USA" "Berkeley CA" Male
 1967 231.10 "Jim Ryun" "USA" "Bakersfield CA" Male
 1975 231.00 "Filbert Bayi" "TAN" "Kingston" Male
-1975 229.40 "John Walker" "NZL" "Göteborg" Male
+1975 229.40 "John Walker" "NZL" "Goteborg" Male
 1979 228.95 "Sebastian Coe" "GBR" "Oslo" Male
 1980 228.80 "Steve Ovett" "GBR" "Oslo" Male
-1981 228.53 "Sebastian Coe" "GBR" "Zürich" Male
+1981 228.53 "Sebastian Coe" "GBR" "Zurich" Male
 1981 228.40 "Steve Ovett" "GBR" "Koblenz" Male
 1981 227.33 "Sebastian Coe" "GBR" "Bruxelles" Male
 1985 226.32 "Steve Cram" "GBR" "Oslo" Male
@@ -58,6 +58,6 @@ Year Time Name Country Place Gender
 1982 258.08 "Mary Decker" "USA" "Paris" Female
 1982 257.44 "Maricica Puica" "ROM" "Rieti" Female
 1984 255.80 "Natalja Artemova" "SOV" "Leningrad (unofficial)" Female
-1985 256.71 "Mary Decker" "USA" "Zürich" Female
+1985 256.71 "Mary Decker" "USA" "Zurich" Female
 1989 255.61 "Paula Ivan" "ROM" "Nice" Female
-1996 252.56 "Svetlana Masterkova" "RUS" "Zürich" Female
+1996 252.56 "Svetlana Masterkova" "RUS" "Zurich" Female

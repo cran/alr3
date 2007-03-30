@@ -59,9 +59,6 @@ b <- highway[,c(8,1,2,10,5)] # select interesting columns
 summary(ans <- bctrans(b,family="yeo.johnson")) # zeros ==> use yeo.johnson
 b$Sigs <- (round(b$Sigs*b$Len)+1)/b$Len # redefine so no zeroes
 summary(ans <- bctrans(b)) # fit with box.cox
-data(highway)
-b <- highway[,c(8,1,2,10,5)] # select interesting columns
-summary(ans <- bctrans(b,family="yeo.johnson")) # zeros ==> use yeo.johnson
 b$Sigs <- (round(b$Sigs*b$Len)+1)/b$Len # redefine so no zeroes
 summary(ans <- bctrans(b)) # fit with box.cox
 lrt.bctrans(ans,lrt=list(c(0,-1,1,0)))

@@ -545,7 +545,7 @@ tran.family.yeo.johnson <- function(U,lambda,modified=TRUE) {
   nonnegs <- U >= 0
   z <- rep(NA,length(U))
   z[nonnegs] <- tran.family.box.cox(U[nonnegs]+1,lambda,modified=FALSE)
-  z[!nonnegs] <- tran.family.box.cox(-U[!nonnegs]+1,2-lambda,modified=FALSE)
+  z[!nonnegs] <- -tran.family.box.cox(-U[!nonnegs]+1,2-lambda,modified=FALSE)
   if (modified == TRUE)
         z * (exp(mean(log((1 + abs(U))^(2 * nonnegs - 1)),na.rm=TRUE)))^(1 -
             lambda)

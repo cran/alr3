@@ -56,11 +56,11 @@ If the value of \code{g} were
 the coefficient estimates from \code{object}, and the covariance matrix from
 \code{object}, and  pass them to \code{compute.delta.method}. 
 
-For objects of calss \code{drc}, created using the \code{drc} library, the 
+For objects of class \code{drc}, created using the \code{drc} package, the 
 parameter names are given by  \dQuote{b1},...,\dQuote{bp}, from left to right.
 The parameter names in the \code{drc} object are not used.
 
-For compute.delta.method, the vector values of length \eqn{p}{p} has estimated
+For compute.delta.method, the length \eqn{p}{p} parameter vector has estimated
 covariance matrix \eqn{V}{V}, a \eqn{p\times p}{p by} p matrix.  \code{g} 
 is an expression of the form
 \code{"(b2+b6*350)/(4*b4)"} that gives the function of values to be evaluated.
@@ -68,7 +68,7 @@ The routine evaluates \code{g} at the parameter values, and then computes \eqn{\
 the derivative 
 of \eqn{g}{g} with respect to the parameter names, also evaluated at the values,
 and then computes the standard error, 
-\deqn{[(\dot{g})'(\mbox{Var}) \dot{g}]^{1/2}}{(t(g') (Var) g')^(1/2)}
+\deqn{[(\dot{g})'(\mbox{Var})^{-1} \dot{g}]^{1/2}}{(t(g') (Var) g')^(1/2)}
 
 \code{delta.method} calls \code{compute.delta.method}, which can be used directly by
 providing the nonlinear function, its values, and its estimated covariance matrix.
