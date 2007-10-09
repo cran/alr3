@@ -34,7 +34,7 @@ pod (x, ...)
 
 ## If the first argument to pod is a formula suitable for defining a linear model,
 
-pod.formula (formula, data = sys.parent(), group, subset, weights, 
+\method{pod}{formula}(formula, data = sys.parent(), group, subset, weights, 
     na.action, mean.function = c("pod", "common", "parallel", 
         "general"), singular.ok = FALSE, contrasts = NULL, offset, 
     control = nls.control(), ...) 
@@ -44,18 +44,18 @@ pod.formula (formula, data = sys.parent(), group, subset, weights,
 ## function call is used.  All the arguments for pod.formula can also be passed to
 ## pod.lm.
 
-pod.lm (x, group, mean.function, control, ...)   
+\method{pod}{lm} (x, group, mean.function, control, ...)   
     
 ## The following related function require a pod fit as the first argument:
     
-anova.pod(object,scale=0,test="F",...)
+\method{anova}{pod}(object,scale=0,test="F",...)
 
-plot.pod(x, colors=rainbow(nlevels(x$group)),
+\method{plot}{pod}(x, colors=rainbow(nlevels(x$group)),
   pch=1:nlevels(x$group),key=FALSE,identify=FALSE,
   xlab="Linear Predictor", ylab=as.character(c(formula(x)[[2]])),
   ...)
  
-plot.pod.lm(x, colors=rainbow(nlevels(x$group)),
+\method{plot}{pod.lm}(x, colors=rainbow(nlevels(x$group)),
       pch=1:nlevels(x$group),key=FALSE,identify=FALSE,
       xlab="Linear Predictor", ylab=as.character(c(formula(x)[[2]])),
       ...) 

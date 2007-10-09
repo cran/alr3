@@ -6,7 +6,7 @@
 \description{
 Prices in many world cities from a
 2003 Union Bank of Switzerland report.}
-}
+
 \format{This data frame contains the following columns:
  \describe{
     \item{City}{

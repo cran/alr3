@@ -3,9 +3,9 @@
 \alias{wblake2}
 \docType{data}
 \non_function{}
-\title{West Bearskin Lake walleye data.}
+\title{West Bearskin Lake small mouth bass data.}
 \description{
-Data on samples of Walleye collected in West Bearskin Lake, Minnesota,
+Data on samples of small mouth bass collected in West Bearskin Lake, Minnesota,
 in 1991.  The file \code{wblake} includes only fish of ages 8 or younger,  
 while \code{wblake2} adds a few older fish.
 }

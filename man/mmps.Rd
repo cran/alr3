@@ -14,7 +14,7 @@ a loess smooth from the plot of the fitted values on \eqn{u}.
 \usage{
 mmps(object,exclude=NULL,layout=NULL,ask,...)
 
-mmp.lm(object, u = predict(object), mean = TRUE, sd = FALSE, 
+\method{mmp}{lm}(object, u = predict(object), mean = TRUE, sd = FALSE, 
    label = deparse(substitute(u)), degree = 1, span = 2/3, 
    colors = c("blue", "red"), ...)
 

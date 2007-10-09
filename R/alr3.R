@@ -23,25 +23,8 @@ sigma.hat.default <- function(object){summary(object)$sigma}
 sigma.hat.glm <- function(object){sqrt(summary(object)$dispersion)}
 ### sd function for splus only; idential to R function
 
-#######################################################################
-#  confidence intervals 
-# This could probably be rewritted as intervals.lm to work with the
-# intervals function in nlme
+conf.intervals <- function(...) {confint(...)} # depricated
 
-#intervals.default <- function(object,...){conf.intervals(object,...)}
-
-conf.intervals <- function(object,level=.95,f=qnorm((1-level)/2))
-   {UseMethod("conf.intervals")}
-conf.intervals.default <- function(object,level=.95,f=qnorm((1-level)/2)) {
-  a1 <- summary(object)$coefficients
-  ans <- cbind(a1[,1],
-               a1[,1] + f * a1[,2],
-               a1[,1] - f * a1[,2])
-  dimnames(ans)[[2]] <- c("Coef est", "Lower", "Upper")
-  ans}
-conf.intervals.lm <- function(object,level=.95,f=qt((1-level)/2,object$df.residual)){
- conf.intervals.default(object,alpha,f)}
- 
 #######################################################################
 # Chapter 4
 #######################################################################
@@ -51,9 +34,9 @@ conf.intervals.lm <- function(object,level=.95,f=qt((1-level)/2,object$df.residu
 
 next.boot <- function(object,sample){UseMethod("next.boot")}
 next.boot.default <- function(object,sample){ 
-   assign("boot.sample",sample,inherits=TRUE)
+#   assign("boot.sample",sample,inherits=TRUE)
 # next line assures resampling only rows in the original subset 9/1/2005
-   update(object,data=model.frame(object),subset=boot.sample)}
+   update(object,data=model.frame(object),subset=sample)}
 next.boot.nls <- function(object,sample){
 # modify to assure resampling only rows in the original subset 9/1/2005
    update(object,subset=sample,start=coef(object),
@@ -63,8 +46,8 @@ boot.case <- function(object, f=coef, B=999){UseMethod("boot.case")}
 boot.case.default <- function (object, f=coef, B = 999) 
 {
     n <- length(resid(object))
-    options(show.error.messages = FALSE)
-    on.exit(options(show.error.messages = TRUE))
+    opt<-options(show.error.messages = FALSE)
+    on.exit(options(opt))
     coef.boot <- NULL
     count.error <- 0
     i <- 0
@@ -805,15 +788,15 @@ resid.curv.test <- function(m,varname) {
      
 tukey.nonadd.test <- function(m){ 
 # yhat^2 must be of the length of the data without deleting any cases.
-  horiz <- predict(m,model.frame(update(m,subset=NULL)))
-  assign("zZ5481f",horiz^2,pos=sys.frame()) # create variable in system frame
-  mup <- update(m,~zZ5481f+.)               # to make it visible to update
-  rm(zZ5481f,envir=sys.frame())             # delete from system frame
+  mf <- model.frame(update(m,subset=NULL))
+  mf$fitsq <- predict(m,mf)^2
+  mup <- update(m,~fitsq+.,data=mf) 
   if(mup$rank > m$rank){
    ans <- summary(mup)$coef[2,3:4] 
    ans[2] <- pnorm(-abs(ans[1]))*2
    ans} else c(NA,NA)
    }
+
   
 resplot <- function(m,varname="tukey",type="pearson",
                     plot=TRUE,add.quadratic=TRUE,
@@ -902,42 +885,64 @@ mmp.lm <- function(object,u=predict(object),mean=TRUE,sd=FALSE,
               sqrt(s2+predict(loess.yhat.var,data.frame(u=new))), lty=2,col=colors[2])} 
   }
   
-mmp.glm <- function(object,u=predict(object),mean=TRUE,sd=FALSE,
-         label=deparse(substitute(u)),degree=1,span=2/3,
-         colors=c("blue","red"),...){
-  fr.mmp <- function(family,x) {
-   if(family == "binomial") pmax(0, pmin(1, x)) else
-    if(family == "poisson") pmax(0, x) else
-     if(family == "gamma") pmax(0, x) else x}
-  if(label=="predict(object)"){label <- "Linear Predictor"}
-  response <- object$model[,1]
-  fam <- object$family$family
-  if (is.matrix(response)) response <- response[,1]/apply(response,1,sum)
-  plot(u,response,xlab=label,ylab=colnames(object$model[1]),...)
-  loess.y <- loess(response~u, degree=degree, span=span)
-  loess.yhat <- loess(predict(object,type="response") ~ u, degree=degree,span=span)
-  new <- seq(min(u),max(u),length=200)
-  pred.loess.y <- fr.mmp(fam,predict(loess.y,data.frame(u=new)))
-  pred.loess.yhat <- fr.mmp(fam,predict(loess.yhat,data.frame(u=new)))
-  if(mean==TRUE) {
-   lines(new,pred.loess.y,   lty=1,col=colors[1])
-   lines(new,pred.loess.yhat,lty=2,col=colors[2])}
-  if(sd==TRUE) { # add \pm sd lines
-   loess.y.var <- loess(residuals(loess.y)^2~u,degree=degree,span=span)
-   pred.loess.y.var <- pmax(0,predict(loess.y.var,data.frame(u=new)))
-   lines(new, fr.mmp(fam,pred.loess.y + sqrt(pred.loess.y.var)), lty=1,col=colors[1])
-   lines(new, fr.mmp(fam,pred.loess.y - sqrt(pred.loess.y.var)), lty=1,col=colors[1])  
-   loess.yhat.var <- loess(residuals(loess.yhat)^2~u,degree=degree,span=span)
-   pred.loess.yhat.var <- pmax(0,predict(loess.yhat.var,data.frame(u=new))) 
-   varfun <- summary(object)$dispersion * 
-               object$family$variance(predict(object,type="response"))/
-               if(!is.null(object$prior.weights)) object$prior.weights else 1  
-   loess.varfun <- loess(varfun~u,degree=degree,span=span)
-   pred.loess.varfun <- pmax(0,predict(loess.varfun,data.frame(u=new)))
-   sd.smooth <- sqrt(pred.loess.yhat.var + pred.loess.varfun)
-   lines(new, fr.mmp(fam,pred.loess.yhat + sd.smooth), lty=2,col=colors[2])
-   lines(new, fr.mmp(fam,pred.loess.yhat - sd.smooth), lty=2,col=colors[2])} 
-  }
+mmp.glm <- function (object, u = predict(object), mean = TRUE, sd = FALSE, 
+    label = deparse(substitute(u)), degree = 1, span = 2/3, colors = c("blue", 
+        "red"), ...) 
+{
+    fr.mmp <- function(family, x) {
+        if (family == "binomial") 
+            pmax(0, pmin(1, x))
+        else if (family == "poisson") 
+            pmax(0, x)
+        else if (family == "gamma") 
+            pmax(0, x)
+        else x
+    }
+    if (label == "predict(object)") {
+        label <- "Linear Predictor"
+    }
+    response <- object$model[, 1]
+    fam <- object$family$family
+    if (is.matrix(response)) 
+        response <- response[, 1]/apply(response, 1, sum)
+    plot(u, response, xlab = label, ylab = colnames(object$model[1]), 
+        ...)
+    loess.y <- loess(response ~ u, degree = degree, span = span)
+    loess.yhat <- loess(predict(object, type = "response") ~ 
+        u, degree = degree, span = span)
+    new <- seq(min(u), max(u), length = 200)
+    pred.loess.y <- fr.mmp(fam, predict(loess.y, data.frame(u = new)))
+    pred.loess.yhat <- fr.mmp(fam, predict(loess.yhat, data.frame(u = new)))
+    if (mean == TRUE) {
+        lines(new, pred.loess.y, lty = 1, col = colors[1])
+        lines(new, pred.loess.yhat, lty = 2, col = colors[2])
+    }
+    if (sd == TRUE) {
+        loess.y.var <- loess(residuals(loess.y)^2 ~ u, degree = degree, 
+            span = span)
+        pred.loess.y.var <- pmax(0, predict(loess.y.var, data.frame(u = new)))
+        lines(new, fr.mmp(fam, pred.loess.y + sqrt(pred.loess.y.var)), 
+            lty = 1, col = colors[1])
+        lines(new, fr.mmp(fam, pred.loess.y - sqrt(pred.loess.y.var)), 
+            lty = 1, col = colors[1])
+        loess.yhat.var <- loess(residuals(loess.yhat)^2 ~ u, 
+            degree = degree, span = span)
+        pred.loess.yhat.var <- pmax(0, predict(loess.yhat.var, 
+            data.frame(u = new)))
+        varfun <- summary(object)$dispersion * object$family$variance(predict(object, 
+            type = "response"))/if (!is.null(object$prior.weights)) 
+            object$prior.weights
+        else 1
+        loess.varfun <- loess(varfun ~ u, degree = degree, span = span)
+        pred.loess.varfun <- pmax(0, predict(loess.varfun, data.frame(u = new)))
+        sd.smooth <- sqrt(pred.loess.yhat.var + pred.loess.varfun)
+        lines(new, fr.mmp(fam, pred.loess.yhat + sd.smooth), 
+            lty = 2, col = colors[2])
+        lines(new, fr.mmp(fam, pred.loess.yhat - sd.smooth), 
+            lty = 2, col = colors[2])
+    }
+}
+
   
 mmps <- function(object,exclude=NULL,layout=NULL,
           ask,...){

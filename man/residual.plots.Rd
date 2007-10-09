@@ -19,7 +19,7 @@ residual.plots (m, ...)
 ### When the first argument is a linear model (of class lm), the form of the
 ### function is
 
-residual.plots.lm(m,tukey=TRUE,exclude=NULL,plot=TRUE,
+\method{residual}{plots.lm}(m,tukey=TRUE,exclude=NULL,plot=TRUE,
      layout=NULL,ask,...)
 
 ### The following are three related functions:    

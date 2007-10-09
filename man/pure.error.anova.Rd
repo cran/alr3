@@ -14,9 +14,7 @@ table is returned.
 
 pure.error.anova(mod)
 
-### When the first argument is a model of class lm,
-
-pure.error.anova.lm(mod)
+\method{pure.error.anova}{lm}(mod)
 
 ### Methods for other than models for type lm have not been defined.
 }

@@ -14,9 +14,9 @@
   accesses these functions using \code{\link{powtran}}.
 }
 \usage{
-tran.family.box.cox(U, lambda, modified = TRUE)
-tran.family.yeo.johnson(U,lambda,modified=TRUE) 
-tran.family.power(U,lambda,modified=FALSE)
+\method{tran.family}{box.cox}(U, lambda, modified = TRUE)
+\method{tran.family}{yeo.johnson}(U,lambda,modified=TRUE) 
+\method{tran.family}{power}(U,lambda,modified=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

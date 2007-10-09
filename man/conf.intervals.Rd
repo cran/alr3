@@ -8,28 +8,18 @@ Thus function computes confidence intervals coefficient estimates
 for a regression object.
 }
 \usage{
-conf.intervals(object,level=.95,f=qnorm((1-level)/2))
+conf.intervals(...)
 }
 \arguments{
-  \item{object}{A regression object}
-  \item{level}{one minus significance level, default = .95}
-  \item{f}{multiplier for the intervals.  For \code{conf.intervals.default}, the
-default choice of \code{f} is \code{qnorm((1-level)/2)}, using the normal distribution
-to get intervals, and t-intervals for \code{conf.invtervals.lm}.
+  \item{...}{Arguments are passed to \code{confint} in the stats package}
   }
-}
+
 
 \value{
-  Returns a matrix, with one row for each estimated parameter, and three 
-  columns, the first giving the coefficient estimate, then the
-  lower limit of the confidence interval, 
-  and then the upper limit.}
-}
+This function calls \code{confint} in the stats package to compute
+confidence intervals of coefficient estimates.}
+
+\seealso{See also \code{\link{confint}}}
 \author{Sanford Weisberg, sandy@stat.umn.edu}
 
-\examples{
-data(forbes)
-m1 <- lm(Lpres ~ Temp, data = forbes)
-conf.intervals(m1, level = .95) # .95 is the default.
-}
 \keyword{ regression }% at least one, from doc/KEYWORDS

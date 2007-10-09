@@ -10,7 +10,7 @@ regression object.
 \usage{
 inf.index(m,cooks.distance,rstudent,outlier.t.test,leverages,...)
 
-inf.index.lm (m, cooks.distance = TRUE, rstudent = TRUE, 
+\method{inf.index}{lm}(m, cooks.distance = TRUE, rstudent = TRUE, 
     outlier.t.test = TRUE, leverages = TRUE, ...) 
 }
 \arguments{

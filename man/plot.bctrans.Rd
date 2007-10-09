@@ -10,13 +10,13 @@
 }
 \usage{
 
-plot.bctrans(x,y=x$Y, lambda=coef(x),family=x$family,plot=pairs,...)
+\method{plot}{bctrans}(x,y=x$Y, lambda=coef(x),family=x$family,plot=pairs,...)
 
-summary.bctrans(object, digits=4, ...)
+\method{summary}{bctrans} (object, digits=4, ...)
 
-coef.bctrans(object,...)
+\method{coef}{bctrans}(object,...)
 
-vcov.bctrans(object,...)
+\method{vcov}{bctrans}(object,...)
 }
 \arguments{
 \item{x}{An object created by \code{bctrans}.}

@@ -4,7 +4,7 @@
 \title{ Access to the Applied Linear Regression website }
 \description{
   This function will access the website for Applied Linear Regression} 
-}
+
 \usage{
 alrweb(what = c("webpage", "errata", "primer"))
 }

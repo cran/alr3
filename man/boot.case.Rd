@@ -21,8 +21,8 @@ the \code{subset} argument to \code{update}. }
   the statistics of interest.  The default is \code{coef}, to return to regression
   coefficient estimates.}
   \item{B}{Number of bootstrap samples.}
-  \item{sample}{A permutation of the integers from 1 to n that defines a
-  bootstrap sample.}
+  \item{sample}{A sample of size n with replacement  of the integers from 
+1 to n that defines a bootstrap sample.}
 }
 \details{
 This routine does the case-bootstrap described in the reference below.  Begin with a 

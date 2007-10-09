@@ -16,13 +16,13 @@ power family.
 \usage{
 powtran(U, lambda,family,modified)
 
-powtran.default(U, lambda,family="box.cox",modified=TRUE)
+\method{powtran}{default}(U, lambda,family="box.cox",modified=TRUE)
 
-powtran.bctrans(U, lambda=coef(U), family=U$family,modified=FALSE)
+\method{powtran}{bctrans}(U, lambda=coef(U), family=U$family,modified=FALSE)
 
-powtran.matrix(U, lambda, family="power",modified=FALSE)
+\method{powtran}{matrix}(U, lambda, family="power",modified=FALSE)
 
-powtran.data.frame(U, lambda, family="power",modified=FALSE)
+\method{powtran}{data.frame}(U, lambda, family="power",modified=FALSE)
 }
 
 \arguments{
