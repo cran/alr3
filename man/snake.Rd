@@ -1,6 +1,5 @@
 \name{snake}
 \alias{snake}
-\non_function{}
 \docType{data}
 \title{Snake river data}
 \description{

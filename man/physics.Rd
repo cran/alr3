@@ -2,7 +2,6 @@
 \alias{physics}
 \alias{physics1}
 \docType{data}
-\non_function{}
 \title{Physics data}
 \description{
 The file physics constains results for \eqn{\pi^+}{pi+} meson as input and

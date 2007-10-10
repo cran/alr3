@@ -1,6 +1,5 @@
 \name{jevons}
 \alias{jevons}
-\non_function{}
 \docType{data}
 \title{Jevon's gold coin data}
 \description{

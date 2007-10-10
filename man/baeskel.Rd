@@ -1,7 +1,6 @@
 \name{baeskel}
 \alias{baeskel}
 \docType{data}
-\non_function{}
 \title{Surface tension}
 \description{The data in the file were collected in a study of the effect of dissolved sulfur on the surface tension of liquid copper (Baes and Kellogg, 1953)}
 \format{This data frame contains the following columns:

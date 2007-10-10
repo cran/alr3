@@ -1,6 +1,5 @@
 \name{drugcost}
 \alias{drugcost}
-\non_function{}
 \docType{data}
 \title{Drug cost.}
 \description{

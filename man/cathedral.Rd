@@ -1,7 +1,6 @@
 \name{cathedral}
 \alias{cathedral}
 \docType{data}
-\non_function{}
 \title{Cathedrals}
 \description{
 Heights and lengths of Gothic and Romanesque cathedrals.

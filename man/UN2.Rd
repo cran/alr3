@@ -1,6 +1,5 @@
 \name{UN2}
 \alias{UN2}
-\non_function{}
 \docType{data}
 \title{ National statistics from the United Nations }
 \usage{data(UN2)}

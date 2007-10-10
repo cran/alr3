@@ -1,6 +1,5 @@
 \name{caution}
 \alias{caution}
-\non_function{}
 \docType{data}
 \title{Caution data}
 \description{

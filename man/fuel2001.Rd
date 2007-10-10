@@ -1,6 +1,5 @@
 \name{fuel2001}
 \alias{fuel2001}
-\non_function{}
 \docType{data}
 \title{Fuel consumption}
 \description{

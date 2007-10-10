@@ -1,6 +1,6 @@
 Package: alr3
-Version: 1.1.0
-Date:  2007/10/09
+Version: 1.1.1
+Date:  2007/10/10
 Title: Methods and data to accompany Applied Linear Regression 3rd edition
 Author: Sanford Weisberg <sandy@stat.umn.edu>
 Maintainer: Sanford Weisberg <sandy@stat.umn.edu>
@@ -16,4 +16,4 @@ Description:  This library is a companion to the textbook S. Weisberg (2005),
  the package fully compatible with version 2.6.0 of R.
 License: GPL version 2 or newer
 URL: http://www.r-project.org, http://www.stat.umn.edu/alr
-Packaged: Tue Oct  9 16:23:48 2007; sandy
+Packaged: Wed Oct 10 08:36:45 2007; sandy

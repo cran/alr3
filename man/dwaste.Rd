@@ -1,6 +1,5 @@
 \name{dwaste}
 \alias{dwaste}
-\non_function{}
 \docType{data}
 \title{Crock data.}
 \description{

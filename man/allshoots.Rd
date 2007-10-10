@@ -3,7 +3,6 @@
 \alias{shortshoots}
 \alias{allshoots}
 \docType{data}
-\non_function{}
 \title{Apple shoots data}
 \description{
   Bland's Apple Shoot data.   allshoots includes all the data,

@@ -1,6 +1,5 @@
 \name{Mitchell}
 \alias{Mitchell}
-\non_function{}
 \docType{data}
 \title{Mitchell soil temperature}
 \description{

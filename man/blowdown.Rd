@@ -2,7 +2,6 @@
 \alias{blowdown}
 \alias{blowAPB}
 \alias{blowBF}
-\non_function{}
 \title{Blowdown data}
 \description{
 Data from the Boundary Waters Canoe Area Wilderness Blowdown.  The data frame blowdown

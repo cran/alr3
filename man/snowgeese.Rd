@@ -1,6 +1,5 @@
 \name{snowgeese}
 \alias{snowgeese}
-\non_function{}
 \docType{data}
 \title{Snow geese}
 \description{

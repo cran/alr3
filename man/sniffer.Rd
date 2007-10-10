@@ -1,6 +1,5 @@
 \name{sniffer}
 \alias{sniffer}
-\non_function{}
 \docType{data}
 \title{Sniffer data}
 \description{

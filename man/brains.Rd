@@ -1,7 +1,6 @@
 \name{brains}
 \alias{brains}
 \docType{data}
-\non_function{}
 \title{Mammal brain weights}
 \description{
 The data provided gives the average body weight in kilograms and the average brain weight in grams for sixty-two species of mammals.}

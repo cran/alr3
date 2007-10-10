@@ -1,6 +1,5 @@
 \name{turk0}
 \alias{turk0}
-\non_function{}
 \docType{data}
 \title{Turkey data, one source}
 \description{

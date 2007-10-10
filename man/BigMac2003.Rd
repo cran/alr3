@@ -1,7 +1,6 @@
 \name{BigMac2003}
 \alias{BigMac2003}
 \docType{data}
-\non_function{}
 \title{World cities data}
 \description{
 Prices in many world cities from a

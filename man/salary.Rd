@@ -1,6 +1,5 @@
 \name{salary}
 \alias{salary}
-\non_function{}
 \docType{data}
 \title{Salary data}
 \description{

@@ -1,6 +1,5 @@
 \name{landrent}
 \alias{landrent}
-\non_function{}
 \title{Land rent}
 \description{
 The data were collected by Douglas Tiffany to study the variation in rent paid in 1977 for agricultural land planted to alfalfa.

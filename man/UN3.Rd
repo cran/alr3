@@ -1,6 +1,5 @@
 \name{UN3}
 \alias{UN3}
-\non_function{}
 \docType{data}
 \title{ National statistics from the United Nations }
 \description{

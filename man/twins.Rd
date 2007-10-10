@@ -1,6 +1,5 @@
 \name{twins}
 \alias{twins}
-\non_function{}
 \docType{data}
 \title{Burt's twin data}
 \description{

@@ -2,7 +2,6 @@
 \alias{wblake}
 \alias{wblake2}
 \docType{data}
-\non_function{}
 \title{West Bearskin Lake small mouth bass data.}
 \description{
 Data on samples of small mouth bass collected in West Bearskin Lake, Minnesota,

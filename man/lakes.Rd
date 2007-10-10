@@ -1,6 +1,5 @@
 \name{lakes}
 \alias{lakes}
-\non_function{}
 \docType{data}
 \title{Lake zooplankton diversity}
 \description{

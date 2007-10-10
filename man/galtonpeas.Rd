@@ -1,6 +1,5 @@
 \name{galtonpeas}
 \alias{galtonpeas}
-\non_function{}
 \docType{data}
 \title{Galton's peas}
 \description{

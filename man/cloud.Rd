@@ -1,7 +1,6 @@
 \name{cloud}
 \alias{cloud}
 \docType{data}
-\non_function{}
 \title{Florida area cumulus experiment, FACE I.}
 \description{
 The data summarize the results of the first Florida Area Cumulus Experiment, or FACE-1, designed to study the effectiveness of cloud seeding to increase rainfall in a target area (Woodley, Simpson, Biondini, and Berkley, 1977).

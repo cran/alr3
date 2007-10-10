@@ -1,6 +1,5 @@
 \name{longley}
 \alias{longley}
-\non_function{}
 \docType{data}
 \title{Longley data}
 \description{

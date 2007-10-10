@@ -1,7 +1,6 @@
 \name{forbes}
 \alias{forbes}
 \docType{data}
-\non_function{}
 \title{Forbes data}
 \description{
 The data consists of 17 pairs of numbers corresponding

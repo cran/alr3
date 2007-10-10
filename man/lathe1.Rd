@@ -1,6 +1,5 @@
 \name{lathe1}
 \alias{lathe1}
-\non_function{}
 \docType{data}
 \title{Lathe data}
 \description{

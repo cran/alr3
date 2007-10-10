@@ -1,6 +1,5 @@
 \name{transact}
 \alias{transact}
-\non_function{}
 \docType{data}
 \title{Transaction data}
 \description{

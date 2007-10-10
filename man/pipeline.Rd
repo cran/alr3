@@ -1,6 +1,5 @@
 \name{pipeline}
 \alias{pipeline}
-\non_function{}
 \title{Alaska pipeline}
 \description{
 The Alaska pipeline data consists of in-field ultrasonic

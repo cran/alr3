@@ -1,6 +1,5 @@
 \name{donner}
 \alias{donner}
-\non_function{}
 \docType{data}
 \title{Donner party}
 \description{

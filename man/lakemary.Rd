@@ -1,6 +1,5 @@
 \name{lakemary}
 \alias{lakemary}
-\non_function{}
 \docType{data}
 \title{Lake Mary bluegills}
 \description{

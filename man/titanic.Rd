@@ -1,6 +1,5 @@
 \name{titanic}
 \alias{titanic}
-\non_function{}
 \docType{data}
 \title{Titanic}
 \description{

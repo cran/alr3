@@ -1,6 +1,5 @@
 \name{segreg}
 \alias{segreg}
-\non_function{}
 \docType{data}
 \title{Energy consumption}
 \description{

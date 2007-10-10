@@ -1,6 +1,5 @@
 \name{rat}
 \alias{rat}
-\non_function{}
 \docType{data}
 \title{Rat data}
 \description{

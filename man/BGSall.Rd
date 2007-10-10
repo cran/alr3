@@ -3,7 +3,6 @@
 \alias{BGSboys}
 \alias{BGSgirls}
 \docType{data}
-\non_function{}
 \title{Berkeley guidance study}
 \description{
 Data from the Berkeley guidance study of children born in

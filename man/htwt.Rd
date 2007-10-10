@@ -1,6 +1,5 @@
 \name{htwt}
 \alias{htwt}
-\non_function{}
 \docType{data}
 \title{Artificial height and weight data}
 \description{

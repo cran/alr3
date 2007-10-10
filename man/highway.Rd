@@ -1,6 +1,5 @@
 \name{highway}
 \alias{highway}
-\non_function{}
 \docType{data}
 \title{Highway accidents}
 \description{

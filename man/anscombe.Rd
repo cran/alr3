@@ -1,7 +1,6 @@
 \name{anscombe}
 \alias{anscombe}
 \docType{data}
-\non_function{}
 \title{Anscombe's data on graphics}
 \description{
 Four regression problems, y1|x1, y2|x1,

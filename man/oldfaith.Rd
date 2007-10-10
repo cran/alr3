@@ -1,6 +1,5 @@
 \name{oldfaith}
 \alias{oldfaith}
-\non_function{}
 \docType{data}
 \title{Old Faithful Geyser data}
 \description{

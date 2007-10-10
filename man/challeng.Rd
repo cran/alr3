@@ -1,7 +1,6 @@
 \name{challeng}
 \alias{challeng}
 \docType{data}
-\non_function{}
 \title{Challenger data}
 \description{
 Contains data from the performance of O-rings in 23 U.S. space shuttle flights prior to the Challenger disaster of January 20, 1986.

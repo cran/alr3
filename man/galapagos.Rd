@@ -1,6 +1,5 @@
 \name{galapagos}
 \alias{galapagos}
-\non_function{}
 \docType{data}
 \title{Galapagos species data}
 \description{

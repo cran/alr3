@@ -1,6 +1,5 @@
 \name{hooker}
 \alias{hooker}
-\non_function{}
 \docType{data}
 \title{Hooker's data}
 \description{

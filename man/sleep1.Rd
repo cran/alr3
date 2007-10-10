@@ -1,6 +1,5 @@
 \name{sleep1}
 \alias{sleep1}
-\non_function{}
 \docType{data}
 \title{Sleep in mammals}
 \description{

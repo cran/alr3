@@ -1,6 +1,5 @@
 \name{turkey}
 \alias{turkey}
-\non_function{}
 \docType{data}
 \title{Turkey data, all sources}
 \description{

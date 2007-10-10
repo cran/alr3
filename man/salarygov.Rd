@@ -1,6 +1,5 @@
 \name{salarygov}
 \alias{salarygov}
-\non_function{}
 \docType{data}
 \title{Government salary study}
 \description{

@@ -1,6 +1,5 @@
 \name{water}
 \alias{water}
-\non_function{}
 \docType{data}
 \title{California water}
 \description{

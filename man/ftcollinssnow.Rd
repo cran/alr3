@@ -1,6 +1,5 @@
 \name{ftcollinssnow}
 \alias{ftcollinssnow}
-\non_function{}
 \docType{data}
 \title{Ft. Collins snowfall}
 \description{

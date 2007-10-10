@@ -1,7 +1,6 @@
 \name{heights}
 \alias{heights}
 \docType{data}
-\non_function{}
 \title{Pearson-Lee data}
 \description{
 Karl Pearson organized the collection

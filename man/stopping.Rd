@@ -1,6 +1,5 @@
 \name{stopping}
 \alias{stopping}
-\non_function{}
 \docType{data}
 \title{Stopping distances}
 \description{

@@ -1,6 +1,5 @@
 \name{downer}
 \alias{downer}
-\non_function{}
 \docType{data}
 \title{Downer data}
 \description{

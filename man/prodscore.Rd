@@ -1,6 +1,5 @@
 \name{prodscore}
 \alias{prodscore}
-\non_function{}
 \docType{data}
 \title{Soil productivity}
 \description{
