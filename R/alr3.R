@@ -36,7 +36,7 @@ next.boot <- function(object,sample){UseMethod("next.boot")}
 next.boot.default <- function(object,sample){ 
 #   assign("boot.sample",sample,inherits=TRUE)
 # next line assures resampling only rows in the original subset 9/1/2005
-   update(object,data=model.frame(object),subset=sample)}
+   update(object,subset=sample)}
 next.boot.nls <- function(object,sample){
 # modify to assure resampling only rows in the original subset 9/1/2005
    update(object,subset=sample,start=coef(object),
@@ -175,7 +175,7 @@ compute.delta.method <- function(Var,g,values,para.name,print=TRUE){
 # print
    if(print){
      cat("Functions of parameters:  ")
-     print.default(g)
+     print.default(g[1])
      cat("Estimate =", est, "with se =", se.est, "\n")}
 # output
    ans<-list(estimate=est, se=se.est, func=g)
