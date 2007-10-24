@@ -26,7 +26,7 @@ the form \code{Y~X1+X2+X3}.  In the latter case, the response is not
 used in the
 transformation, but it will be used in the \code{plot} method.  If you
 have previously computed a linear model fit, say \code{m1}, then you
-can use \code{formula(m1)} to provide this argument.}
+can use \code{m1} in place of the formula.}
 \item{data}{a data.frame (or list) from which the variables in the formula
           should be taken.}
 \item{subset}{an optional vector specifying a subset of observations to be used.}
@@ -120,7 +120,7 @@ summary(ans <- bctrans1(b,family="yeo.johnson")) # zeros ==> use yeo.johnson
 summary(ans2 <- bctrans(~Len+ADT+Trks+Shld+Sigs,data=highway,family="yeo.johnson"))
 # or, first fit an lm, and extract the formula
 m1 <- lm(Rate~Len+ADT+Trks+Shld+Sigs,data=highway)
-summary(ans3 <- bctrans(formula(m1),data=highway,family="yeo.johnson"))
+summary(ans3 <- bctrans(m1,data=highway,family="yeo.johnson"))
 # work with the response
 b$Sigs <- (round(b$Sigs*b$Len)+1)/b$Len # redefine so no zeroes
 summary(ans <- bctrans1(b)) # fit with box.cox

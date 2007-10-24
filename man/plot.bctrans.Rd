@@ -28,7 +28,7 @@
 \item{plot}{Name of the plotting function to view the results, usually
 \code{pairs} or similar.}
 \item{digits}{Accuracy of summary output for \sQuote{bctrans} objects.}
-\item{...}{Arguments passed to other methods.}
+\item{...}{Arguments passed to the plotting method.}
 }
 
 \value{

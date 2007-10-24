@@ -71,7 +71,7 @@ transformations to improve normality or symmetry.  \emph{Biometrika}, 87,
 \author{ Sanford Weisberg, sandy@stat.umn.edu }
 
 \seealso{\code{\link{inv.tran.plot}}, \code{\link{bctrans}},
-\code{link{inv.res.plot}},\code{\link{tran.family}}. }
+\code{\link{inv.res.plot}},\code{\link{tran.family}}. }
 \examples{
 data(ufcwc)
 attach(ufcwc)

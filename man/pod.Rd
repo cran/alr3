@@ -51,12 +51,12 @@ pod (x, ...)
 \method{anova}{pod}(object,scale=0,test="F",...)
 
 \method{plot}{pod}(x, colors=rainbow(nlevels(x$group)),
-  pch=1:nlevels(x$group),key=FALSE,identify=FALSE,
+  pch=1:nlevels(x$group),key="topleft",identify=FALSE,
   xlab="Linear Predictor", ylab=as.character(c(formula(x)[[2]])),
   ...)
  
 \method{plot}{pod.lm}(x, colors=rainbow(nlevels(x$group)),
-      pch=1:nlevels(x$group),key=FALSE,identify=FALSE,
+      pch=1:nlevels(x$group),key="topleft",identify=FALSE,
       xlab="Linear Predictor", ylab=as.character(c(formula(x)[[2]])),
       ...) 
 }
@@ -102,9 +102,11 @@ using the \code{\link{nls.control}} function.}
   \item{identify}{If TRUE, clicking the mouse on a graph will print the case name
   of the nearest point.  This continues until turned off (by pushing the escape
   key, among other ways of doing this).}
-  \item{key}{If FALSE, no key; if TRUE; click on the plot to have the
-key drawn; if equal to a vector of length two, draw the key at the point
-specified.}
+  \item{key}{The default is \code{"topleft"}, in which case a legend is added to
+the top left corner of the plot; other choices include \code{"bottomright"}.
+If \code{key} is a vector of two coordinates, the legend is drawn at the coordinates
+specified. If \code{key} is FALSE, no key is drawn; if TRUE, you can place the
+key interactively by clicking on the plot.}
   \item{xlab}{Horizontal label, optional}
   \item{ylab}{Vertical label, optional}
 }

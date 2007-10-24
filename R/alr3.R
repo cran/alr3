@@ -356,7 +356,7 @@ predict.pod     <- function(object,...){ predict(podnls.fit(object))}
 
 # Plot one dimensional models by group
 plot.pod.lm <- function(x, colors=rainbow(nlevels(x$group)),
-      pch=1:nlevels(x$group),key=FALSE,identify=FALSE,
+      pch=1:nlevels(x$group),key="topleft",identify=FALSE,
       xlab="Linear Predictor", ylab=as.character(c(formula(x)[[2]])),...) {
   mean.function <- x$pod.mean.function
   if(mean.function == "general") stop("No 2D plot for the general pod model")
@@ -402,7 +402,7 @@ plot.pod.lm <- function(x, colors=rainbow(nlevels(x$group)),
   invisible()}
 
 plot.pod<-function(x, colors=rainbow(nlevels(x$group)),
-  pch=1:nlevels(x$group),key=FALSE,identify=FALSE,
+  pch=1:nlevels(x$group),key="topleft",identify=FALSE,
   xlab="Linear Predictor", ylab=as.character(c(formula(x)[[2]])),...)
 { 
    yp<-podresponse(x)
@@ -547,7 +547,7 @@ tran.family.basic <- function(U,lambda,modified=FALSE){
 inv.tran.plot<- function(x,y,lambda=c(-1,0,1),lty=1:(1+length(lambda)),
         col=rainbow(length(lambda)+1),xlab=deparse(substitute(x)),
         ylab=deparse(substitute(y)),family="box.cox",optimal=TRUE,
-        key=FALSE,...){
+        key="topleft",...){
  if (is.factor(x)) stop("Predictor variable may not be a factor")
  if (is.factor(y)) stop("Response variable may not be a factor")
  if (optimal){opt <- inv.tran.estimate(x,y,family=family)
@@ -563,7 +563,7 @@ inv.tran.plot<- function(x,y,lambda=c(-1,0,1),lty=1:(1+length(lambda)),
     if (key == TRUE) {
       print("Click mouse on plot to locate the key, or press Escape")
       loc <-locator(n=1) 
-      legend(loc[1],loc[2], legend = as.character(round(lam,2)),lty=lty,col=col,cex=.75)}}
+      legend(loc[1],loc[2], legend = as.character(round(lam,2)),lty=lty,col=col)}}
     else { 
       loc <- key
       legend(loc[1],loc[2], legend = as.character(round(lam,2)),lty=lty,col=col,cex=.75)}
@@ -639,9 +639,12 @@ function (formula, data = NULL, subset, na.action=na.omit, ...)
     mf <- na.action(mf) 
     y <- model.response(mf, "numeric")
     if (!is.null(y)){
-      y <- matrix(y,ncol=1)
-      colnames(y) <- as.character(attr(attr(mf,"terms"),"variables"))[2]
+      if(is.vector(y)){
+         y <- matrix(y,ncol=1)
+         colnames(y) <- as.character(attr(attr(mf,"terms"),"variables"))[2]}
       mf <- mf[,-1]} 
+    wcol <- match("(weights)",names(mf))
+    if (!is.na(wcol)) mf <- mf[,-wcol]
     if (any(sapply(1:dim(mf)[2],function(j) is.factor(mf[[j]]))))
        stop("At least one specified term is a factor.")
     bctrans1(mf, Y=y, ..., call=match.call(expand.dots=TRUE))
@@ -786,18 +789,25 @@ resid.curv.test <- function(m,varname) {
      if(mup$rank > m$rank) summary(mup)$coef[2,3:4]  else c(NA,NA)
      }}}
      
-tukey.nonadd.test <- function(m){ 
-# yhat^2 must be of the length of the data without deleting any cases.
-  mf <- model.frame(update(m,subset=NULL))
-  mf$fitsq <- predict(m,mf)^2
-  mup <- update(m,~fitsq+.,data=mf) 
+# revised 10/24/2007, with help from Duncan Murdoch.  It now works
+# correctly with deleted rows and doesn't generate any errors.
+tukey.nonadd.test <- function(m){
+  newenv <- new.env(parent=environment(m$terms))
+  missing <- summary(m)$na.action
+  pred2 <- m$fitted.values^2
+  if (!is.null(missing)){
+    newenv$pred2 <- rep(0,length(pred2) + length(missing) )
+    newenv$pred2[-missing] <- pred2} else
+    newenv$pred2 <- pred2
+  environment(m$terms) <- newenv
+  mup <- update(m,~.+pred2)
   if(mup$rank > m$rank){
-   ans <- summary(mup)$coef[2,3:4] 
+   ans <- summary(mup)$coef[,3:4]
+   ans <- ans[match("pred2",rownames(ans)),]
    ans[2] <- pnorm(-abs(ans[1]))*2
    ans} else c(NA,NA)
    }
 
-  
 resplot <- function(m,varname="tukey",type="pearson",
                     plot=TRUE,add.quadratic=TRUE,
                     ylab=paste(string.capitalize(type),"Residuals"),...){
@@ -807,9 +817,9 @@ resplot <- function(m,varname="tukey",type="pearson",
  if(is.na(col) && varname != "tukey")
    stop(paste(varname,"is not a term in the mean function"))
  horiz <- if(varname == "tukey") predict(m) else m$model[[col]]
- 
  lab <- if(varname == "tukey") {"Fitted values"} else varname
- if(plot==TRUE){ 
+ ans <- if (class(horiz) != "factor") resid.curv.test(m,varname) else c(NA,NA)
+ if(plot==TRUE){
   plot(horiz,residuals(m,type=type),xlab=lab,ylab=ylab,...)
   abline(h=0,lty=2)
   if(class(horiz) != "factor") {
@@ -817,34 +827,36 @@ resplot <- function(m,varname="tukey",type="pearson",
         new <- seq(min(horiz),max(horiz),length=200)
         lm2 <- lm(residuals(m,type=type)~poly(horiz,2))
         lines(new,predict(lm2,list(horiz=new)),lty=3)
-        }
-    resid.curv.test(m,varname)} else c(NA,NA)}}
+        }}}
+  ans}
 
 residual.plots <- function(m, ...){UseMethod("residual.plots")}
 residual.plots.lm <- function(m,tukey=TRUE,exclude=NULL,plot=TRUE,
      layout=NULL,ask,...){
   term.labels <- attr(m$terms,"term.labels") # this is a list
-  term.classes <- attr(m$terms,"dataClasses")
-  nt <- length(term.labels) # number of terms excluding intercept
+  excluded <- term.labels[match(exclude,term.labels)]
+#  term.classes <- attr(m$terms,"dataClasses")[-1]
+#  excluded <- c(excluded, term.labels[term.classes != "numeric"])
+  terms <- setdiff(term.labels,excluded)
+  nt <- length(terms) + tukey 
   if(is.null(layout)){
-   layout <- switch(min(nt+1,9),c(1,1),c(1,2),c(2,2),c(2,2),c(3,2),c(3,2),
+   layout <- switch(min(nt,9),c(1,1),c(1,2),c(2,2),c(2,2),c(3,2),c(3,2),
                                 c(3,3),c(3,3),c(3,3))}
   nr <- 0
   op<-par(no.readonly=TRUE)
-  ask <- if(missing(ask) || is.null(ask))
-    prod(layout)<nt-length(exclude) else ask
+  ask <- if(missing(ask) || is.null(ask)) prod(layout)<nt else ask
   on.exit(par(op))
   if(prod(layout) > 1)
     par(mfrow=layout,mai=c(.6,.6,.1,.1),mgp=c(2,1,0),
         cex.lab=1.0,cex=0.7,ask=ask) 
     else par(mfrow=layout,ask=ask)   
   ans <- NULL
-  for (j in 1:nt){ 
-   if(is.na(match(j,exclude))){ 
+  for (j in 1:length(terms)){ 
      nr <- nr+1
-     ans <- rbind(ans,resplot(m,term.labels[j],plot=plot,...))
-     row.names(ans)[nr] <- term.labels[j]
-    }}
+     print(c(nr,nt))
+     ans <- rbind(ans,resplot(m,terms[j],plot=plot,...))
+     row.names(ans)[nr] <- terms[j]
+    }
   # Tukey's test
   if (tukey == TRUE){
    ans <- rbind(ans,resplot(m,"tukey",plot=plot,...))

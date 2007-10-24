@@ -19,7 +19,7 @@ residual.plots (m, ...)
 ### When the first argument is a linear model (of class lm), the form of the
 ### function is
 
-\method{residual}{plots.lm}(m,tukey=TRUE,exclude=NULL,plot=TRUE,
+\method{residual.plots}{lm}(m,tukey=TRUE,exclude=NULL,plot=TRUE,
      layout=NULL,ask,...)
 
 ### The following are three related functions:    
@@ -62,7 +62,7 @@ tukey.nonadd.test(m)
 significance level.  \code{residual.plots} draws all residuals plots, versus
 each term in the model and versus fitted values,  and returns all the
 curvature tests.  \code{residual.plots} should not be used with factors.  
-\code{resid.curv.test} computes the curvature test only.
+\code{resid.curv.test} computes the curvature test only.  For any factors 
 }
 \value{
 Returns a data.frame with one row for each plot drawn, one column for 

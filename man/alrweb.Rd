@@ -26,6 +26,7 @@ package by John Verzani }
 
 
 \examples{
-# Not run: alrweb()  # go to the website
+
+\dontrun{alrweb()}
 }
 \keyword{ interface }% at least one, from doc/KEYWORDS

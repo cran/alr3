@@ -16,7 +16,7 @@ standard error.
 inv.tran.plot(x,y,lambda=c(-1,0,1),lty=1:(1+length(lambda)),
         col=rainbow(length(lambda)+1),xlab=deparse(substitute(x)),
         ylab=deparse(substitute(y)),family="box.cox",optimal=TRUE,
-        key=FALSE,...)
+        key="topleft",...)
 
 inv.tran.estimate(x,y,family="box.cox",...)
 }
@@ -31,9 +31,11 @@ inv.tran.estimate(x,y,family="box.cox",...)
   \item{optimal}{Include the optimal value of lambda?}
   \item{lty}{line types corresponding to the powers}
   \item{col}{color corresponding to the powers}
-  \item{key}{If TRUE, draw a key and use \code{\link{locator}}
-  to find it; if FALSE do not draw a key.  If a vector of length 2, draw
-  the upper left corner of the key at that point.}
+  \item{key}{The default is \code{"topleft"}, in which case a legend is added to
+the top left corner of the plot; other choices include \code{"bottomright"}.
+If \code{key} is a vector of two coordinates, the legend is drawn at the coordinates
+specified. If \code{key} is FALSE, no key is drawn; if TRUE, you can place the
+key interactively by clicking on the plot.}
   \item{xlab}{Label for the horizontal axis.}
 
   \item{ylab}{Label for the vertical axis.}
