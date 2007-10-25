@@ -789,21 +789,24 @@ resid.curv.test <- function(m,varname) {
      if(mup$rank > m$rank) summary(mup)$coef[2,3:4]  else c(NA,NA)
      }}}
      
-# revised 10/24/2007, with help from Duncan Murdoch.  It now works
-# correctly with deleted rows and doesn't generate any errors.
+# revised 10/25/2007, with help from Duncan Murdoch and Christos Hatzis.  
+# It now works correctly with NA, subsets and weights.
 tukey.nonadd.test <- function(m){
-  newenv <- new.env(parent=environment(m$terms))
-  missing <- summary(m)$na.action
-  pred2 <- m$fitted.values^2
-  if (!is.null(missing)){
-    newenv$pred2 <- rep(0,length(pred2) + length(missing) )
-    newenv$pred2[-missing] <- pred2} else
-    newenv$pred2 <- pred2
-  environment(m$terms) <- newenv
-  mup <- update(m,~.+pred2)
+  envir <- environment(formula(m))
+	dd <- eval(m$call$data, envir)
+	subs <- eval(m$call$subset, envir)
+	wgts <- eval(m$call$weights, envir)
+	naa <- m$call$na.action
+	dd <- data.frame(dd, preds.sq=predict(m, dd)^2)
+	uf <- update.formula(formula(m$terms), ~ . + preds.sq)
+	environment(uf) <- environment(NULL)
+	mup <- if(is.null(naa))
+   lm(uf, data=dd, subset=subs, weights=wgts)
+   else
+	 lm(uf, data=dd, subset=subs, weights=wgts,na.action=naa)
   if(mup$rank > m$rank){
    ans <- summary(mup)$coef[,3:4]
-   ans <- ans[match("pred2",rownames(ans)),]
+   ans <- ans[match("preds.sq",rownames(ans)),]
    ans[2] <- pnorm(-abs(ans[1]))*2
    ans} else c(NA,NA)
    }
@@ -853,7 +856,6 @@ residual.plots.lm <- function(m,tukey=TRUE,exclude=NULL,plot=TRUE,
   ans <- NULL
   for (j in 1:length(terms)){ 
      nr <- nr+1
-     print(c(nr,nt))
      ans <- rbind(ans,resplot(m,terms[j],plot=plot,...))
      row.names(ans)[nr] <- terms[j]
     }
