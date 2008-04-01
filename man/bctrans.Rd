@@ -117,7 +117,8 @@ data(highway)
 b <- highway[,c(8,1,2,10,5)] # select interesting columns
 summary(ans <- bctrans1(b,family="yeo.johnson")) # zeros ==> use yeo.johnson
 # or, compute using a formula and get the same answer.
-summary(ans2 <- bctrans(~Len+ADT+Trks+Shld+Sigs,data=highway,family="yeo.johnson"))
+summary(ans2 <-
+bctrans(~Len+ADT+Trks+Shld+Sigs,data=highway,family="yeo.johnson"))
 # or, first fit an lm, and extract the formula
 m1 <- lm(Rate~Len+ADT+Trks+Shld+Sigs,data=highway)
 summary(ans3 <- bctrans(m1,data=highway,family="yeo.johnson"))

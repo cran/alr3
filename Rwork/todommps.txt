@@ -1,0 +1,22 @@
+MMP needed fixes
+
+  1.  If u has two levels, loess goes nuts.  Check and fix.
+  2.  mmps copes with missing data, but mmp does not.  DONE
+  3.  mmp should see if u is in the data frame, and use it if it is DONE
+  4.  I've changed colors to lineColors.  DONE
+  5.  Allow a Groups arg that will draw the plot for the specified group
+  6.  write mmpControl to control margins in the plot.
+
+
+
+# fit the model of interest:
+unb<-glm(itch_ep~dog + trtdose,family=poisson)
+# get the fitted values and the residuals:
+real.answer <- anova(unb)[3,]
+
+# do the bootstrap by resampling Y while fixing the design.
+out <- NULL
+for (i in 1:999) {
+ ystar <- sample(itch_ep, size=length(itch_ep), replace=TRUE)
+ out <- rbind(out,anova(update(unb,ystar~.))[3,]) }
+

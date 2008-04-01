@@ -6,7 +6,7 @@
 \alias{tukey.nonadd.test}
 \title{Residual plots and curvature tests for linear model fits}
 \description{
-Plots the residuals versus each term in a mean function and versus
+.plots the residuals versus each term in a mean function and versus
 fitted values.  Also computes a curvature test for each of the plots
 by adding a quadratic term and testing the quadratic to be zero.  This
 is Tukey's test for nonadditivity when plotting against fitted values.
@@ -19,7 +19,7 @@ residual.plots (m, ...)
 ### When the first argument is a linear model (of class lm), the form of the
 ### function is
 
-\method{residual.plots}{lm}(m,tukey=TRUE,exclude=NULL,plot=TRUE,
+\method{residual.plots}{lm}(m,vars=~.,fitted=TRUE,plot=TRUE,
      layout=NULL,ask,...)
 
 ### The following are three related functions:    
@@ -34,10 +34,16 @@ tukey.nonadd.test(m)
 }
 \arguments{
   \item{m}{ \code{lm} regression object }
+  \item{vars}{ A one-sided formula that specifies a subset of the predictors. 
+One
+  residual plot is drawn for each column specified.  The default
+  \code{~.} is to plot against all predictors.  For example, the
+  specification \code{vars = ~.-X3} would plot against all predictors
+  except for \code{X3}.}
+  \item{fitted}{If TRUE, the default, plot against fitted values.}
   \item{tukey}{If TRUE, draw plot of residuals versus fitted values and compute
   Tukey's test of non-additivity.}
-  \item{exclude}{A list of predictor numbers for which plots will NOT be drawn.  If
-  NULL, all plots are drawn.}
+
   \item{layout}{ If set to a value like \code{c(1,1)} or \code{c(4,3)}, the layout
   of the graph will have this many rows and columns.  If not set, the program will
   select an appropriate layout.  If the number of graphs exceed nine, you must 
@@ -58,11 +64,14 @@ tukey.nonadd.test(m)
   \item{plot}{If TRUE, draw the plot(s).}
   }
 \details{
-\code{resplot} draws ONE residual plot and returns the curvature test and its
-significance level.  \code{residual.plots} draws all residuals plots, versus
-each term in the model and versus fitted values,  and returns all the
-curvature tests.  \code{residual.plots} should not be used with factors.  
-\code{resid.curv.test} computes the curvature test only.  For any factors 
+\code{residual.plots} draws all residuals plots, versus
+each term specified first-order term in the model (interactions are
+automatically skipped) and versus fitted values,  and returns all the
+curvature tests.  \code{resplot}, which is called by \code{residual.plots},
+should be viewed as an internal function, and is included here to display its
+arguments, which can be used with \code{residual.plots} as well.  
+\code{resid.curv.test} computes the curvature test only.  For any factors a
+boxplot will be drawn.
 }
 \value{
 Returns a data.frame with one row for each plot drawn, one column for 

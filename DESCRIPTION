@@ -1,6 +1,6 @@
 Package: alr3
-Version: 1.1.6
-Date:  2007/10/25
+Version: 1.1.7
+Date:  2008/04/01
 Title: Methods and data to accompany Applied Linear Regression 3rd edition
 Author: Sanford Weisberg <sandy@stat.umn.edu>
 Maintainer: Sanford Weisberg <sandy@stat.umn.edu>
@@ -14,7 +14,7 @@ Description:  This library is a companion to the textbook S. Weisberg (2005),
  transformations. Ver 1.1.0 drops the conf.intervals function in favor of
  the confint function in stat, includes several minor bug fixes, and makes
  the package fully compatible with version 2.6.0 of R. 1.1.2 corrects a bug
- introduced in boot.case.
+ introduced in boot.case. Version 1.1.7 adds a namespace.
 License: GPL (>= 2)
 URL: http://www.r-project.org, http://www.stat.umn.edu/alr
-Packaged: Thu Oct 25 10:50:39 2007; sandy
+Packaged: Sun May 25 21:15:17 2008; hornik

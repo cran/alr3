@@ -111,12 +111,12 @@ random.lin.comb.default <- function(X,seed=NULL) {
  std <- function(x){ 
     s <- sd(x)
     if( s > 0) (x-mean(x))/s else x}
- apply(X,2,std)%*% as.vector(2*rnorm(dim(X)[2])-1)
+ as.vector(apply(X,2,std)%*% as.vector(2*rnorm(dim(X)[2])-1) )
  }
  
-random.lin.comb.lm <- function(X,...) {
+random.lin.comb.lm <- function(X,seed=NULL) {
  if(is.null(X$model)) X <- update(X,model=TRUE)
- random.lin.comb(X$model[,-1],...)}
+ random.lin.comb(X$model[,-1],seed=seed)}
 
 
 ###########################################################################
@@ -341,18 +341,17 @@ function (formula, data=sys.parent(), group, subset, weights=NULL, na.action,
    ans
 }}
 
-podnls.fit <-       function(x){ x$nls.fit }
-print.pod<-        function(x, ...){ print(podnls.fit(x)) }
-summary.pod <-     function(object, ...){ summary(podnls.fit(object),...) }
-coef.pod <-        function(object, ...){ coef(podnls.fit(object),...)}
-deviance.pod <-    function(object, ...){ deviance(podnls.fit(object),...)} 
-vcov.pod <-        function(object, ...){ vcov(podnls.fit(object),...)}
-residuals.pod <-   function(object,...){ residuals(podnls.fit(object))}
+print.pod<-        function(x, ...){ print(x$nls.fit) }
+summary.pod <-     function(object, ...){ summary(object$nls.fit,...) }
+coef.pod <-        function(object, ...){ coef(object$nls.fit,...)}
+deviance.pod <-    function(object, ...){ deviance(object$nls.fit,...)} 
+vcov.pod <-        function(object, ...){ vcov(object$nls.fit,...)}
+residuals.pod <-   function(object,...){ residuals(object$nls.fit)}
 formula.pod<-      function(x, ...){      formula(x$call)}
-fitted.pod <-      function(object, ...){ fitted(podnls.fit(object),...)}
-podresponse<-     function(object, ...){ residuals(object)+fitted(object)}
-df.residual.pod <- function(object,...){ length(resid(object))-length(coef(object))}
-predict.pod     <- function(object,...){ predict(podnls.fit(object))}
+fitted.pod <-      function(object, ...){ fitted(object$nls.fit,...)}
+df.residual.pod <- function(object,...){
+                                 length(resid(object))-length(coef(object))}
+predict.pod     <- function(object,...){ predict(object$nls.fit)}
 
 # Plot one dimensional models by group
 plot.pod.lm <- function(x, colors=rainbow(nlevels(x$group)),
@@ -405,7 +404,7 @@ plot.pod<-function(x, colors=rainbow(nlevels(x$group)),
   pch=1:nlevels(x$group),key="topleft",identify=FALSE,
   xlab="Linear Predictor", ylab=as.character(c(formula(x)[[2]])),...)
 { 
-   yp<-podresponse(x)
+   yp<-residuals(x)+fitted(x)
    group <- x$group
    gloc <- match("group",names(x$call))
    xp<-x$linear.part
@@ -578,7 +577,7 @@ inv.tran.estimate <- function(x,y,family="box.cox",...){
                     na.action=na.omit))}   
   lhat <- optimize(f = function(lambda) sum((y-f(lambda,x,y,family))^2),
                  interval=c(-10,10))
-  g <- lm(y~powtran(x,lhat$minimum),na.action=na.omit)             
+  g <- lm(y~powtran(x,lhat$minimum,family=family,modified=TRUE),na.action=na.omit)             
   n1 <- nls( y ~ b0 + b1*powtran(x,lam,family=family,modified=TRUE),
         start=list(b0 = coef(g)[1], b1=coef(g)[2], lam=lhat$minimum),
         na.action=na.omit,...)
@@ -700,6 +699,7 @@ bctrans1 <-function(X, Y=NULL, start=NULL, family="box.cox",call=NULL,...){
 
     
 lrt.bctrans <-function(object, lrt=NULL, ones=TRUE, zeroes=TRUE){
+    if (class(lrt)=="numeric") lrt <- list(lrt)
     modified.power<-function(x, lambda, family){
         powtran(x,lambda,family=family,modified=TRUE)}
     neg.kernel.profile.logL<-function(X, lambda, family){
@@ -789,21 +789,32 @@ resid.curv.test <- function(m,varname) {
      if(mup$rank > m$rank) summary(mup)$coef[2,3:4]  else c(NA,NA)
      }}}
      
-# revised 10/25/2007, with help from Duncan Murdoch and Christos Hatzis.  
+# revised 10/30/2007, with help from Duncan Murdoch and Christos Hatzis.  
 # It now works correctly with NA, subsets and weights.
+# Doesn't work if weights are in the data frame...
+# Doesn't work for glms...
+# Modified again 10/29/07.  
+# It now works even without a data=data.frame 
 tukey.nonadd.test <- function(m){
   envir <- environment(formula(m))
 	dd <- eval(m$call$data, envir)
 	subs <- eval(m$call$subset, envir)
 	wgts <- eval(m$call$weights, envir)
 	naa <- m$call$na.action
-	dd <- data.frame(dd, preds.sq=predict(m, dd)^2)
+  preds.sq <- fitted(update(m,na.action=na.exclude))^2
+  if(!is.null(dd)) dd <- data.frame(dd, preds.sq=predict(m, dd)^2)
 	uf <- update.formula(formula(m$terms), ~ . + preds.sq)
 	environment(uf) <- environment(NULL)
-	mup <- if(is.null(naa))
-   lm(uf, data=dd, subset=subs, weights=wgts)
-   else
-	 lm(uf, data=dd, subset=subs, weights=wgts,na.action=naa)
+  if(is.null(dd) & !is.null(subs)) { 
+    out <- update(m,subset=NULL,method="model.frame")
+    out <- rep(NA,dim(out)[1]+length(attr(out,"na.action")))
+    out[subs] <- preds.sq
+    preds.sq <- out} 
+	mup <- if(is.null(naa) & is.null(dd))
+      lm(uf, subset=subs, weights=wgts)
+   else if(is.null(naa)) lm(uf, data=dd, subset=subs, weights=wgts)
+   else if(is.null(dd))  lm(uf, subset=subs, weights=wgts)
+   else lm(uf, data=dd, subset=subs, weights=wgts,na.action=naa)
   if(mup$rank > m$rank){
    ans <- summary(mup)$coef[,3:4]
    ans <- ans[match("preds.sq",rownames(ans)),]
@@ -821,7 +832,14 @@ resplot <- function(m,varname="tukey",type="pearson",
    stop(paste(varname,"is not a term in the mean function"))
  horiz <- if(varname == "tukey") predict(m) else m$model[[col]]
  lab <- if(varname == "tukey") {"Fitted values"} else varname
- ans <- if (class(horiz) != "factor") resid.curv.test(m,varname) else c(NA,NA)
+ ans <- 
+   if(inherits(horiz,"poly")) {
+       horiz <- horiz[,1]
+       lab <- paste("Linear part of",lab)
+       c(NA,NA)}
+   else if (class(horiz) == "factor") c(NA,NA)
+   else  resid.curv.test(m,varname)
+# ans <- if (class(horiz) != "factor")  else c(NA,NA)
  if(plot==TRUE){
   plot(horiz,residuals(m,type=type),xlab=lab,ylab=ylab,...)
   abline(h=0,lty=2)
@@ -834,14 +852,16 @@ resplot <- function(m,varname="tukey",type="pearson",
   ans}
 
 residual.plots <- function(m, ...){UseMethod("residual.plots")}
-residual.plots.lm <- function(m,tukey=TRUE,exclude=NULL,plot=TRUE,
+residual.plots.lm <- function(m,vars=~.,fitted=TRUE,plot=TRUE,
      layout=NULL,ask,...){
-  term.labels <- attr(m$terms,"term.labels") # this is a list
-  excluded <- term.labels[match(exclude,term.labels)]
-#  term.classes <- attr(m$terms,"dataClasses")[-1]
-#  excluded <- c(excluded, term.labels[term.classes != "numeric"])
-  terms <- setdiff(term.labels,excluded)
-  nt <- length(terms) + tukey 
+  mf <- attr(update(m,vars,method="model.frame"),"terms")
+  if(any(is.na(match(all.vars(formula(mf)),all.vars(formula(m))))))
+     stop("Only predictors in the formula can be plotted.")
+  term.order <- which(attr(mf,"order") > 1)
+  terms <- attr(mf,"term.labels") # this is a list
+  if(length(term.order)>0) terms <- terms[-term.order]
+  nt <- length(terms) + fitted 
+  if (nt == 0) stop("No plots specified")
   if(is.null(layout)){
    layout <- switch(min(nt,9),c(1,1),c(1,2),c(2,2),c(2,2),c(3,2),c(3,2),
                                 c(3,3),c(3,3),c(3,3))}
@@ -850,59 +870,94 @@ residual.plots.lm <- function(m,tukey=TRUE,exclude=NULL,plot=TRUE,
   ask <- if(missing(ask) || is.null(ask)) prod(layout)<nt else ask
   on.exit(par(op))
   if(prod(layout) > 1)
-    par(mfrow=layout,mai=c(.6,.6,.1,.1),mgp=c(2,1,0),
-        cex.lab=1.0,cex=0.7,ask=ask) 
+    par(mfrow=layout,mar=c(3.5,4,.5,2)+.1,mgp=c(2,1,0),
+        cex.lab=1.0,cex=0.7,ask=ask)# mai=c(.6,.6,.1,.1)
     else par(mfrow=layout,ask=ask)   
   ans <- NULL
-  for (j in 1:length(terms)){ 
+  if(!is.null(terms)){
+  for (term in terms){ 
      nr <- nr+1
-     ans <- rbind(ans,resplot(m,terms[j],plot=plot,...))
-     row.names(ans)[nr] <- terms[j]
-    }
+     ans <- rbind(ans,resplot(m,term,plot=plot,...))
+     row.names(ans)[nr] <- term
+    } }
   # Tukey's test
-  if (tukey == TRUE){
+  if (fitted == TRUE){
    ans <- rbind(ans,resplot(m,"tukey",plot=plot,...))
    row.names(ans)[nr+1] <- "Tukey test"
    ans[nr+1,2] <- 2*pnorm(abs(ans[nr+1,1]),lower.tail=FALSE)}
   dimnames(ans)[[2]] <- c("Test stat", "Pr(>|t|)")
   ans}
 
+
 #############################################
-# marginal model plots
+# marginal model plots    Rev 10/30/07
+# To do:
+# If u has two levels, loess goes nuts.  Check and fix.
+# Allow a Groups arg that will draw the plot for the specified group
+# write mmpControl to control margins in the plot.
+# improve control over the legend
+# BUG:  sd's are WRONG with weights; see cards data
 #############################################
 marginal.model.plot <- function(...){mmp(...)}
 mmp <- function(object, ...){UseMethod("mmp")}
 
-mmp.lm <- function(object,u=predict(object),mean=TRUE,sd=FALSE,
-         label=deparse(substitute(u)),degree=1,span=2/3,
-         colors=c("blue","red"),...){
-  if(label=="predict(object)"){label <- "Fitted values"}
-  plot(u,object$model[,1],xlab=label,ylab=colnames(object$model[1]),...)
-  loess.y <- loess(object$model[,1]~u, degree=degree, span=span)
-  loess.yhat <- loess(predict(object) ~ u, degree=degree,span=span)
-  new <- seq(min(u),max(u),length=200)
-  if(mean==TRUE) {
-   lines(new,predict(loess.y,data.frame(u=new)),lty=1,col=colors[1])
-   lines(new,predict(loess.yhat,data.frame(u=new)),lty=2,col=colors[2])}
-  if(sd==TRUE) { # add \pm sd lines
-   loess.y.var <- loess(residuals(loess.y)^2~u,degree=degree,span=span)
-   lines(new, predict(loess.y,data.frame(u=new)) + 
-              sqrt(predict(loess.y.var,data.frame(u=new))), lty=1,col=colors[1])
-   lines(new, predict(loess.y,data.frame(u=new)) - 
-              sqrt(predict(loess.y.var,data.frame(u=new))), lty=1,col=colors[1]) 
-   loess.yhat.var <- loess(residuals(loess.yhat)^2~u,
-              degree=degree,span=span)
-   s2 <- summary(object)$sigma^2
-   lines(new, predict(loess.yhat,data.frame(u=new)) + 
-              sqrt(s2+predict(loess.yhat.var,data.frame(u=new))), lty=2,col=colors[2])
-   lines(new, predict(loess.yhat,data.frame(u=new)) - 
-              sqrt(s2+predict(loess.yhat.var,data.frame(u=new))), lty=2,col=colors[2])} 
-  }
-  
-mmp.glm <- function (object, u = predict(object), mean = TRUE, sd = FALSE, 
-    label = deparse(substitute(u)), degree = 1, span = 2/3, colors = c("blue", 
-        "red"), ...) 
+mmp.lm <-
+function (object, u, mean = TRUE, sd = FALSE,
+    xlab = deparse(substitute(u)), degree = 1, span = 2/3, key="topleft", 
+    lineColors = c("blue","red"), ...)
 {
+    if (missing(u)) {
+        xlab <- "Fitted values"
+        u <- fitted(update(object,na.action=na.exclude))
+    }
+    na.cases <- attr(object$model,"na.action")
+    if(length(na.cases)>0) u <- u[-na.cases]
+    zpred <- function(...){pmax(predict(...),0)}
+    plot(u, object$model[, 1], xlab = xlab, ylab = colnames(object$model[1]),
+        ...)
+    if(!is.null(key))legend(key,c("Data","Model"),lty=c(1,2),col=lineColors)
+#    mtext("Data",col=lineColors[1],adj=0,cex=.7)
+#    mtext("Model",col=lineColors[2],adj=1,cex=.7)
+    loess.y <- loess(object$model[, 1] ~ u, degree = degree,
+        span = span)
+    loess.yhat <- loess(predict(object) ~ u, degree = degree,
+        span = span)
+    new <- seq(min(u), max(u), length = 200)
+    if (mean == TRUE) {
+        lines(new, predict(loess.y, data.frame(u = new)), lty = 1,
+            col = lineColors[1])
+        lines(new, predict(loess.yhat, data.frame(u = new)),
+            lty = 2, col = lineColors[2])
+    }
+    if (sd == TRUE) {
+        loess.y.var <- loess(residuals(loess.y)^2 ~ u, degree = degree,
+            span = span)
+        lines(new, predict(loess.y, data.frame(u = new)) +
+            sqrt(zpred(loess.y.var,data.frame(u = new))), lty = 1, col = lineColors[1])
+        lines(new, predict(loess.y, data.frame(u = new)) - sqrt(zpred(loess.y.var,
+            data.frame(u = new))), lty = 1, col = lineColors[1])
+        loess.yhat.var <- loess(residuals(loess.yhat)^2 ~ u,
+            degree = degree, span = span)
+        s2 <- summary(object)$sigma^2
+        lines(new, predict(loess.yhat, data.frame(u = new)) +
+            sqrt(s2 + zpred(loess.yhat.var, data.frame(u = new))),
+            lty = 2, col = lineColors[2])
+        lines(new, predict(loess.yhat, data.frame(u = new)) -
+            sqrt(s2 + zpred(loess.yhat.var, data.frame(u = new))),
+            lty = 2, col = lineColors[2])
+    }
+}
+  
+mmp.glm <- function (object, u, mean = TRUE, sd = FALSE, 
+    xlab = deparse(substitute(u)), degree = 1, span = 2/3, key="topleft",
+    lineColors = c("blue", "red"), ...) 
+{
+    if (missing(u)) {
+        xlab <- "Linear Predictor"
+        u <- fitted(update(object,na.action=na.exclude))
+    }    
+    na.cases <- attr(object$model,"na.action")
+    if(length(na.cases)>0) u <- u[-na.cases]
     fr.mmp <- function(family, x) {
         if (family == "binomial") 
             pmax(0, pmin(1, x))
@@ -912,15 +967,13 @@ mmp.glm <- function (object, u = predict(object), mean = TRUE, sd = FALSE,
             pmax(0, x)
         else x
     }
-    if (label == "predict(object)") {
-        label <- "Linear Predictor"
-    }
     response <- object$model[, 1]
     fam <- object$family$family
     if (is.matrix(response)) 
         response <- response[, 1]/apply(response, 1, sum)
-    plot(u, response, xlab = label, ylab = colnames(object$model[1]), 
+    plot(u, response, xlab = xlab, ylab = colnames(object$model[1]), 
         ...)
+    if(!is.null(key))legend(key,c("Data","Model"),lty=c(1,2),col=lineColors,...)
     loess.y <- loess(response ~ u, degree = degree, span = span)
     loess.yhat <- loess(predict(object, type = "response") ~ 
         u, degree = degree, span = span)
@@ -928,17 +981,17 @@ mmp.glm <- function (object, u = predict(object), mean = TRUE, sd = FALSE,
     pred.loess.y <- fr.mmp(fam, predict(loess.y, data.frame(u = new)))
     pred.loess.yhat <- fr.mmp(fam, predict(loess.yhat, data.frame(u = new)))
     if (mean == TRUE) {
-        lines(new, pred.loess.y, lty = 1, col = colors[1])
-        lines(new, pred.loess.yhat, lty = 2, col = colors[2])
+        lines(new, pred.loess.y, lty = 1, col = lineColors[1])
+        lines(new, pred.loess.yhat, lty = 2, col = lineColors[2])
     }
     if (sd == TRUE) {
         loess.y.var <- loess(residuals(loess.y)^2 ~ u, degree = degree, 
             span = span)
         pred.loess.y.var <- pmax(0, predict(loess.y.var, data.frame(u = new)))
         lines(new, fr.mmp(fam, pred.loess.y + sqrt(pred.loess.y.var)), 
-            lty = 1, col = colors[1])
+            lty = 1, col = lineColors[1])
         lines(new, fr.mmp(fam, pred.loess.y - sqrt(pred.loess.y.var)), 
-            lty = 1, col = colors[1])
+            lty = 1, col = lineColors[1])
         loess.yhat.var <- loess(residuals(loess.yhat)^2 ~ u, 
             degree = degree, span = span)
         pred.loess.yhat.var <- pmax(0, predict(loess.yhat.var, 
@@ -951,37 +1004,35 @@ mmp.glm <- function (object, u = predict(object), mean = TRUE, sd = FALSE,
         pred.loess.varfun <- pmax(0, predict(loess.varfun, data.frame(u = new)))
         sd.smooth <- sqrt(pred.loess.yhat.var + pred.loess.varfun)
         lines(new, fr.mmp(fam, pred.loess.yhat + sd.smooth), 
-            lty = 2, col = colors[2])
+            lty = 2, col = lineColors[2])
         lines(new, fr.mmp(fam, pred.loess.yhat - sd.smooth), 
-            lty = 2, col = colors[2])
+            lty = 2, col = lineColors[2])
     }
 }
 
-  
-mmps <- function(object,exclude=NULL,layout=NULL,
-          ask,...){
-  predvars <- attr(object$terms,"predvars") # this is a list
-  nt <- length(predvars)-1 # number of terms excluding intercept
-  factors <- which(sapply(2:dim(object$model)[2],function(j) 
-                    is.factor(object$model[[j]])))
-  if (length(factors)>0)warning("Factors were skipped")
-  exclude <- c(exclude,factors)
+ 
+mmps <- function(object,vars=~.,fitted=TRUE,layout=NULL,ask,...){
+  vars <- update(object,vars,na.action=NULL,method="model.frame")
+  dataClasses <- attr(attr(vars,"terms"),"dataClasses")[-1]
+  terms <- names(dataClasses)[dataClasses == "numeric"]
+  nt <- length(terms)+fitted
   if(is.null(layout)){
-   layout <- switch(min(nt+1-length(exclude),9),
+   layout <- switch(min(nt,9),
                            c(1,1),c(1,2),c(2,2),c(2,2),c(3,2),c(3,2),
                            c(3,3),c(3,3),c(3,3))}
   op<-par(no.readonly=TRUE)
-  ask <- if(missing(ask) || is.null(ask))
-    prod(layout)<nt-length(exclude) else ask
+  ask <- if(missing(ask) || is.null(ask)) prod(layout)<nt else ask
   on.exit(par(op))
   if(prod(layout) > 1)
-    par(mfrow=layout,mai=c(.6,.6,.1,.1),mgp=c(2,1,0),cex.lab=1.0,cex=0.7,ask=ask) 
-    else par(mfrow=layout,ask=ask) 
-  for (j in 3:(nt+1)){
-      if(is.na(match(j-2,exclude))){ 
-       mmp(object,object$model[,j-1],label=deparse(predvars[[j]]),...)}}
-  mmp(object,,...)
+    par(mfrow=layout,ask=ask,mar=c(3.5,4,.5,2)+.1,mgp=c(2,1,0),cex.lab=1.0,cex=0.7)# mai=c(.6,.6,.1,.1)
+    else par(mfrow=layout,ask=ask)
+  for (term in terms){
+    j <- match(term,names(vars))
+    mmp(object,vars[,j],xlab=term,...)}
+  if(fitted==TRUE) mmp(object,...)
   }
+  
+                       
  
 
 
@@ -1003,9 +1054,9 @@ names <- c("Cook's distance", "Studentized residuals",
 # check for row.names, and use them if they are numeric.
 xaxis <- sapply(row.names(m$model),function(x) eval(parse(text=x)))
 if (any (sapply(xaxis,is.character))) xaxis <- 1:length(xaxis)
-op <- par(mfrow=c(length(sel),1),mai=c(.6,.6,.2,.2),mgp=c(2,1,0))
+op <- par(mfrow=c(length(sel),1),mar=c(3.5,4,.5,2)+.1,mgp=c(2,1,0)) #mai=c(.6,.6,.2,.2)
 on.exit(par(op))
-for (j in sel){
+for (j in sel){    
  y <- switch(j,cooks.distance(m),rstudent(m),
           outlier.t.test(m,order=FALSE,bound=1.01)$Bonf.pvals,
           hatvalues(m))
