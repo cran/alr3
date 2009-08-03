@@ -32,11 +32,13 @@ conf.intervals <- function(...) {confint(...)} # depricated
 ####  Case resampling bootstrap, based on work by Lexin Li
 ####  Includes error handling
 
+#### Doesn't work if lm(ojbect).  Doesn't work if subset is set
+
 next.boot <- function(object,sample){UseMethod("next.boot")}
 next.boot.default <- function(object,sample){ 
 #   assign("boot.sample",sample,inherits=TRUE)
 # next line assures resampling only rows in the original subset 9/1/2005
-   update(object,subset=sample)}
+   update(object,data=model.frame(object),subset=sample)}
 next.boot.nls <- function(object,sample){
 # modify to assure resampling only rows in the original subset 9/1/2005
    update(object,subset=sample,start=coef(object),

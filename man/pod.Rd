@@ -170,9 +170,9 @@ is returned.  Since the only method for pod.lm objects is a plotting method,
 except for plotting these objects behave like lm objects.  
 }
 \references{Cook, R. D. and Weisberg, S. (2004).  Partial-one dimensinal models.
-\em{American Statistician}, 58, 110-116.
+\emph{American Statistician}, 58, 110-116.
 
-Weisberg, S. (2005) \em{Applied Linear Regression}, third edition.  New York: 
+Weisberg, S. (2005) \emph{Applied Linear Regression}, third edition.  New York: 
 Wiley.}
 \author{Sanford Weisberg, sandy@stat.umn.edu }
 

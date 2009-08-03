@@ -28,7 +28,6 @@ RP= red pine, RM= red maple, BA = black ash, A= aspen.
     }
  }
 }
-\details{}
 \source{Roy Rich}
 \examples{
 data(blowBF)

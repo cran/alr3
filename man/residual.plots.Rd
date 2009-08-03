@@ -6,7 +6,7 @@
 \alias{tukey.nonadd.test}
 \title{Residual plots and curvature tests for linear model fits}
 \description{
-.plots the residuals versus each term in a mean function and versus
+Plots the residuals versus each term in a mean function and versus
 fitted values.  Also computes a curvature test for each of the plots
 by adding a quadratic term and testing the quadratic to be zero.  This
 is Tukey's test for nonadditivity when plotting against fitted values.
@@ -58,7 +58,7 @@ One
   \item{type}{Type of residuals to be used.  Pearson residuals are 
   appropriate for \code{lm} objects since there are equivalent to ordinary residuals
   with ols and correctly weighted residuals with wls.}
-  \item{ylab} {Label for the yaxis.  The default is the residual type.}
+  \item{ylab}{Label for the yaxis.  The default is the residual type.}
   \item{add.quadratic}{if TRUE, fits the quadratic regression of the
   vertical axis on the  horizontal axis.}
   \item{plot}{If TRUE, draw the plot(s).}

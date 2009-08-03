@@ -28,7 +28,6 @@ Response 4
     }
  }
 }
-\details{}
 \source{
 F. Anscombe (1983).  Graphs in statistical analysis, \emph{American
 Statistician}, 27, 17-21.}
