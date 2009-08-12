@@ -124,66 +124,7 @@ random.lin.comb.lm <- function(X,seed=NULL) {
 ###########################################################################
 # Chapter 6  Delta Method
 ###########################################################################
-
-delta.method <- function(object,g,parameter.prefix="b",print=TRUE)
-  {UseMethod("delta.method")}
-
-### lm, glm, and others with unnamed parameters:
-delta.method.default<-function(object, g, parameter.prefix="b",print=TRUE)
-{
-   if(!is.character(g)) stop("function argument must be a string")
-   g<-parse(text=g)
-# variance of estimated parameters
-   V <- vcov(object)               # vcov is in R base, in alr3 for S-Plus
-   para.val <- coef(object)        # values of coef estimates
-   q<-length(para.val)              # number of coef estimates
-   para.name<-paste(parameter.prefix,0:(q-1),sep="") #coef names
-   compute.delta.method(V,g,para.val,para.name,print)}
-   
-# nls has named parameters so parameter.prefix is ignored
-delta.method.nls<-function(object, g, parameter.prefix=NULL,print=TRUE, ...)
-{
-   if(!is.character(g)) stop("function argument must be a string")
-   g<-parse(text=g)
-   V<-vcov(object)  # variance of estimated parameters
-   compute.delta.method(V,g,coef(object),names(coef(object)),
-       print=print)}
-       
-delta.method.drc<-function(object, g, parameter.prefix="b",print=TRUE, ...)
-{
-   if(!is.character(g)) stop("function argument must be a string")
-   g<-parse(text=g)
-# variance of estimated parameters
-   s1 <- summary(object)
-   V <- vcov(object)  
-   para.val<-coef(object)           # values of coef estimates
-   q<-length(para.val)              # number of coef estimates
-   para.name<-paste(parameter.prefix,1:q,sep="") #coef names
-   names(para.val) <- para.name
-   compute.delta.method(V,g,para.val,para.name,print)}
-   
-# computes g evaluated at the data, and t(g')Vt(g'), the estimated
-# standard error
-compute.delta.method <- function(Var,g,values,para.name,print=TRUE){
-   q <- length(values)
-   for(i in 1:q) {assign(para.name[i], values[i])}
-   est<-eval(g) 
-   names(est)<-NULL
-# derivative of function g of parameters
-   gd<-NULL
-   for(i in 1:q) {gd<-c(gd, eval(D(g, para.name[i])))}
-# compute se
-   se.est<-as.vector(sqrt(t(gd) %*% Var %*% gd))
-# print
-   if(print){
-     cat("Functions of parameters:  ")
-     print.default(g[1])
-     cat("Estimate =", est, "with se =", se.est, "\n")}
-# output
-   ans<-list(estimate=est, se=se.est, func=g)
-   return(invisible(ans)) 
-}
-
+# in fine deltaMethod.R
 
 ##################################################################
 # pod models; Cook and Weisberg (2004), American Statistician
