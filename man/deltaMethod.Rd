@@ -3,7 +3,6 @@
 \alias{delta.method.default}
 \alias{delta.method.lm} 
 \alias{delta.method.nls}
-\alias{delta.method.drc}
 \alias{delta.method.lmList}
 \alias{delta.method.nlsList}
 \alias{delta.method.lme} 
@@ -25,7 +24,6 @@ delta.method(object, ...)
 \method{delta.method}{default}(object,g,var,...)
 \method{delta.method}{lm} (object, g, var=vcov,parameterPrefix="b",...)
 \method{delta.method}{nls}(object, g, var=vcov,...)
-\method{delta.method}{drc}(object, g, var=vcov,...)
 \method{delta.method}{lmList}(object, g, var=vcov,parameterPrefix="b",...)
 \method{delta.method}{nlsList}(object, g, var=vcov,...)
 \method{delta.method}{lme} (object, g, var=vcov,parameterPrefix="b",...)

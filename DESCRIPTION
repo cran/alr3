@@ -1,6 +1,6 @@
 Package: alr3
-Version: 1.1.9
-Date: 2009/08/12
+Version: 1.1.10
+Date: 2009/08/20
 Title: Methods and data to accompany Applied Linear Regression 3rd
         edition
 Author: Sanford Weisberg <sandy@stat.umn.edu>
@@ -25,8 +25,9 @@ Description: This library is a companion to the textbook S. Weisberg
         introduced in boot.case. Version 1.1.7 adds a namespace. Ver
         1.1.8 fixes more bugs.  Ver. 1.1.9 updated the delta.method to
         work with a user-supplied estimate of the variance matrix.
+        1.1.10 removed a conflict with another package.
 License: GPL (>= 2)
 URL: http://www.r-project.org, http://www.stat.umn.edu/alr
-Packaged: 2009-08-12 17:38:04 UTC; sandy
+Packaged: 2009-08-20 13:20:08 UTC; sandy
 Repository: CRAN
-Date/Publication: 2009-08-19 08:14:42
+Date/Publication: 2009-08-20 15:04:16

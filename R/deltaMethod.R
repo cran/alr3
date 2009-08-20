@@ -41,11 +41,6 @@ delta.method.nls<-function(object, g, var=vcov,...)
    var <- if(is.function(var)) var(object)
    delta.method.default(coef(object),g,var)}
   
-delta.method.drc <-  
-function(object,g,var=vcov,...)
-{  var <- if(is.function(var)) var(object)
-   delta.method.default(coef(object),g,var)
-   }
    
 delta.method.lmList <- function(object,g,var=vcov,parameterPrefix="b",...){
   out <- NULL
