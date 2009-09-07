@@ -73,8 +73,8 @@ Linear Regression}, third edition, Wiley, Chapter 8}
 
 \examples{
 data(ufcwc)
-c1 <- lm(Height~Dbh,ufcwc)
-mmp(c1,ufcwc$Dbh,label="Diameter, Dbh",color=c("black","black"))
+c1 <- lm(Height ~ Dbh, ufcwc)
+mmp(c1, ufcwc$Dbh, xlab="Diameter, Dbh", lineColors=c("black", "black"))
 mmps(c1)
 
 } 

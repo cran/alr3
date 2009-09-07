@@ -10,12 +10,12 @@ a random vector of length \eqn{p}.
 \usage{
 random.lin.comb(X, seed = NULL)
 
-\method{random.lin.comb}{lm} (X, seed=NULL)
+\S3method{random.lin.comb}{lm} (X, seed=NULL)
 }
 \arguments{
   \item{X}{ An \eqn{n \times p}{n by p} matrix or data frame.  For the lm
 method, X is a linear regression model, and \code{random.lin.comb} is 
-applied to \code{X$model[,-1]} }
+applied to \code{model.matrix(X)} }
   \item{seed}{ If not NULL, use this to initialize the random number generator}
 }
 \details{

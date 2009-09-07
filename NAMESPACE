@@ -71,4 +71,5 @@ S3method(mmp, glm)
 S3method(inf.index, lm)
 S3method(outlier.t.test, default)
 S3method(random.lin.comb, default)
+S3method(random.lin.comb, lm)
 

@@ -116,6 +116,9 @@ random.lin.comb.default <- function(X,seed=NULL) {
  as.vector(apply(X,2,std)%*% as.vector(2*rnorm(dim(X)[2])-1) )
  }
  
+random.lin.comb.lm <- function(X,...) {
+  random.lin.comb(model.matrix(X),...)}
+ 
 random.lin.comb.lm <- function(X,seed=NULL) {
  if(is.null(X$model)) X <- update(X,model=TRUE)
  random.lin.comb(X$model[,-1],seed=seed)}
