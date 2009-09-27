@@ -5,11 +5,9 @@
 \description{
 The data provided gives the average body weight in kilograms and the average brain weight in grams for sixty-two species of mammals.}
 
-\format{This data frame contains the following columns:
+\format{This data frame uses species names as row labels and
+contains the following columns:
  \describe{
-    \item{Case.names}{
-Species name. 
-    }
     \item{BrainWt}{
 Brain weight, grams 
     }

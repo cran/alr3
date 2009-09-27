@@ -1,4 +1,4 @@
-Island NS ES Area Anear Dist DistSC Elevation EM 
+NS ES Area Anear Dist DistSC Elevation EM 
 Baltra 58 23 25.09 1.84 0.6 0.6 NA 0 
 Bartolome 31 21 1.24 572.33 0.6 26.3 109 1 
 Caldwell 3 3 0.21 0.78 2.8 58.7 114 1 

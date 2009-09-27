@@ -5,7 +5,7 @@
 \description{
 Includes species averages for 62 mammals. 
 }
-\format{This data frame contains the following columns:
+\format{This data frame uses spcies as row lable and contains the following columns:
  \describe{
     \item{SWS}{
  Slow wave nondreaming sleep, hrs/day
@@ -36,9 +36,6 @@ Includes species averages for 62 mammals.
     }
     \item{D}{
  Danger index, 1=least, 5=most
-    }
-    \item{Species}{
- Species of animal
     }
  }
 }

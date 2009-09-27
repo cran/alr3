@@ -1,4 +1,4 @@
-Locality Fertility PPgdp
+Fertility PPgdp
 Afghanistan 6.80 98
 Albania 2.28 1317
 Algeria 2.80 1784

@@ -7,7 +7,7 @@ These data give the number of known
 crustacean zooplankton species for 69 world lakes.  Also included are a number
 of characteristics of each lake.  There are missing values.
 }
-\format{This data frame contains the following columns:
+\format{This data frame uses lake name as row label and contains the following columns:
  \describe{
     \item{Species}{
  Number of zooplankton species
@@ -41,9 +41,6 @@ of characteristics of each lake.  There are missing values.
     }
     \item{Area}{
  Lake area, in hectares
-    }
-    \item{Lake}{
- Name of Lake
     }
  }
 }

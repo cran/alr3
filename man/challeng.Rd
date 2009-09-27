@@ -28,9 +28,6 @@ Contains data from the performance of O-rings in 23 U.S. space shuttle flights p
     \item{Damage}{
  Total Damage Index
     }
-    \item{ID}{
- ID name of launch
-    }
     \item{Date}{
  date of flight
     }

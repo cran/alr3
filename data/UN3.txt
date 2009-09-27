@@ -1,4 +1,4 @@
-Locality ModernC Change PPgdp Frate Pop Fertility Purban
+ModernC Change PPgdp Frate Pop Fertility Purban
 "Algeria" 49 1.67 1784 7 31800 2.80 58
 "Armenia" 22 -0.45 687 51 3061 1.15 67
 "Australia" 72 0.96 18788 55 19730 1.70 91

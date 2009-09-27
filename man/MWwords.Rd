@@ -5,11 +5,8 @@
 \description{
 The data give the frequencies of words in works from four different sources: the political writings of eighteenth century American political figures Alexander Hamilton, James Madison, and John Jay, and the book \emph{Ulysses} by twentieth century Irish writer James Joyce.}
 
-\format{This data frame contains the following columns:
+\format{This data frame uses the word as row labels and contains the following columns:
  \describe{
-    \item{Word}{
-Word 
-    }
     \item{Hamilton}{
 Hamilton frequency 
     }

@@ -1,4 +1,4 @@
-Case-names BrainWt BodyWt
+ BrainWt BodyWt
 Arctic_fox 44.5 3.385
 Owl_monkey 15.499 0.48
 Beaver 8.1 1.35

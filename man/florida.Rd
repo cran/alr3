@@ -7,9 +7,8 @@ County-by-county vote for president in Florida in 2000 for Bush, Gore and Buchan
 }
 \usage{data(florida)}
 \format{
-  A data frame with 67 observations on the following 4 variables.
+  A data frame three vaiaables for each of Florida's 67 counties.
   \describe{
-    \item{County}{County name}
     \item{Gore}{Vote for Gore}
     \item{Bush}{Vote for Bush}
     \item{Buchanan}{Vote for Buchanan}

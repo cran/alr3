@@ -12,7 +12,8 @@ one per category is avaiable.  The goal is to determine the terms that are
 related to cost, and in particular to understand the role of GS and RI in
 determining cost.
 }
-\format{This data frame contains the following columns:
+\format{This data frame uses a short code name for the drug plan as row
+labels and contains the following columns:
  \describe{
     \item{COST}{
  Ave. cost to plan for 1 prescription for 1 day
@@ -37,9 +38,6 @@ determining cost.
     }
     \item{MM}{
  Member months, a measure of the size of the plan
-    }
-    \item{ID}{
- Plan name
     }
  }
 }

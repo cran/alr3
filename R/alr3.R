@@ -8,10 +8,12 @@ function (what = c("webpage", "errata", "primer"))
     what = match.arg(what)
     urls = c(webpage = "http://www.stat.umn.edu/alr/", 
         errata = "http://www.stat.umn.edu/alr/Links/errata.pdf", 
-        primer = "http://www.stat.umn.edu/alr/Links/RSprimer.pdf")
+        primer = "http://www.stat.umn.edu/alr/Links/Rprimer.pdf")
     url = urls[what]
     browseURL(url)
 }
+alrprimer <- function() alrweb("primer")
+alrerrata <- function() alrweb("errata")
 
 #######################################################################
 # Chapter 2

@@ -1,5 +1,7 @@
 \name{alrweb}
 \alias{alrweb}
+\alias{alrprimer}
+\alias{alrerrata}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Access to the Applied Linear Regression website }
 \description{
@@ -7,6 +9,10 @@
 
 \usage{
 alrweb(what = c("webpage", "errata", "primer"))
+
+alrprimer()
+
+alrerrata()
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,7 +24,8 @@ alrweb(what = c("webpage", "errata", "primer"))
 }
 
 \value{
-  Either a webpage or a pdf document is displayed.
+  Either a webpage or a pdf document is displayed.  alrprimer() and alrerrata()
+call alrweb() with the appropriate arguments.
 }
 
 \author{ Sanford Weisberg, based on the function UsingR in the UsingR

@@ -11,7 +11,8 @@ to death.  Perhaps because they were ordinary people -- farmers,
 merchants, parents, children.
 These data include some information about each of the members of the party
 from Johnson (1996).}
-\format{This data frame contains the following columns:
+\format{This data frame uses the person's name as row labels 
+and contains the following columns:
  \describe{
     \item{Age}{
  Approximate age in 1846
@@ -24,9 +25,6 @@ from Johnson (1996).}
     }
     \item{Family.name}{
  Either a family name, hired or single
-    }
-    \item{Name}{
- Name of Person
     }
     \item{Status}{
  Family, single or hired

@@ -9,10 +9,11 @@ independent countries.  Localities with missing data have been removed from this
 data set.
 }
 \format{
-  This data frame contains the following columns:
+  This data frame uses locality name as row labels.
+  In some cases, the geographic area is
+    smaller than a country; for example, Hong Kong.
+It contains the following columns:
   \describe{
-    \item{Locality}{Locality name.  In some cases, the geographic area is
-    smaller than a country; for example, Hong Kong}
     \item{ModernC}{Percent of unmarried women using a modern method of
     contraception}
     \item{Change}{Annual population growth rate, percent}

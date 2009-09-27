@@ -5,7 +5,8 @@
 \description{
 Heights and lengths of Gothic and Romanesque cathedrals.
 }
-\format{This data frame contains the following columns:
+\format{This data frame uses cathedral names as row label 
+andcontains the following columns:
  \describe{
     \item{Type}{
 Romanesque or Gothic
@@ -15,9 +16,6 @@ Total height, feet
     }
     \item{Length}{
 Total length, feet 
-    }
-    \item{Cathedral}{
-Name of the Cathedral
     }
  }
 }

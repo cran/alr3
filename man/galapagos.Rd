@@ -5,11 +5,9 @@
 \description{
 Johnson and Raven (1973) have presented data giving the number of species and related variables for 29 different islands in the Galapagos Archipelago.
 }
-\format{This data frame contains the following columns:
+\format{This data frame uses the island name as row labels 
+and contains the following columns:
  \describe{
-    \item{Island}{
- Island name
-    }
     \item{NS}{
  Number of Species
     }

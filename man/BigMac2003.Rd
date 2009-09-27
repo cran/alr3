@@ -6,11 +6,9 @@
 Prices in many world cities from a
 2003 Union Bank of Switzerland report.}
 
-\format{This data frame contains the following columns:
+\format{This data frame uses the name of the city as row names, and
+contains the following columns:
  \describe{
-    \item{City}{
- Name of City
-    }
     \item{BigMac}{
  Minutes of labor to purchase a Big Mac 
     }

@@ -1,5 +1,7 @@
 ################ April fools day, 2008
 export(alrweb)
+export(alrprimer)
+export(alrerrata)
 export(sigma.hat)
 export(conf.intervals )
 export(next.boot )

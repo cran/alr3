@@ -9,10 +9,10 @@ places, mostly UN members, but also other areas like Hong Kong that are not
 independent countries.
 }
 \format{
-  This data frame contains the following columns:
+  This data frame uses the locality name as a row label.  In some cases the
+geographic area is smaller than a country; for example Hong Kong.  The file
+ contains the following columns:
   \describe{
-    \item{Locality}{Locality name.  In some cases, the geographic area is
-    smaller than a country; for example, Hong Kong}
     \item{Fertility}{Expected number of live births per female, 2000}
     \item{PPgdp}{Per capita 2001 GDP, in US \$}
   }
