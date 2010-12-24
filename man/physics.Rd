@@ -29,6 +29,6 @@ s-dependence of proton fragmentation by hadrons. II.  Incident laboratory
 momenta, 30--250 GeV/c.  \emph{Physics Review D}, 17, 2875--2887.  }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 5.1.1.}
 \examples{
-data(physics1)
+head(physics1)
 }
 \keyword{datasets}

@@ -25,7 +25,7 @@ while \code{wblake2} adds a few older fish.
 \source{Minnesta Department of Natural Resources}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 1.1.}
 \examples{
-data(wblake)  # excludes fish age 9 or older
-data(wblake2)  # all fish
+head(wblake)  # excludes fish age 9 or older
+head(wblake2)  # all fish
 }
 \keyword{datasets}

@@ -33,6 +33,6 @@ R. D. Cook and J. Witmer (1985). A note on parameter-effects curvature.
 \emph{Journal of the American Statistical Association}, 80, 872--878.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 1.1.} 
 \examples{
-data(turkey)
+head(turkey)
 }
 \keyword{datasets}

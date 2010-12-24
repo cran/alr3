@@ -22,6 +22,6 @@ In a paper presented to the Royal Institute on February 9, 1877, Sir Francis Gal
 \source{Pearson, K. (1930). \emph{Life and Letters and Labours of Francis Galton}, Vol IIIa. Cambridge: Cambridge University Press.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 5.1.}
 \examples{
-data(galtonpeas)
+head(galtonpeas)
 }
 \keyword{datasets}

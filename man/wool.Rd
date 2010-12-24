@@ -30,6 +30,6 @@ Box, G. E. P. and Cox, D. R. (1964).  An analysis of transformations (with
 discussion).  \emph{J. Royal Statist. Soc.}, B26, 211-46.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 6.3.}
 \examples{
-data(wool)
+head(wool)
 }
 \keyword{datasets}

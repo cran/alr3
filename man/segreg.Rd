@@ -24,6 +24,6 @@ This building is steam heated, so electricity is not used for heating.
 \source{Charles Ng}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 11.3.}
 \examples{
-data(segreg)
+head(segreg)
 }
 \keyword{datasets}

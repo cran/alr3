@@ -45,6 +45,6 @@ labels and contains the following columns:
 \source{Mark Siracuse}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 9.15.}
 \examples{
-data(drugcost)
+head(drugcost)
 }
 \keyword{datasets}

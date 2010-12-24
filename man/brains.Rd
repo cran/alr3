@@ -20,6 +20,6 @@ Body weight, kg
 \source{Allison, T. and Cicchetti, D. (1976). Sleep in mammals: Ecology and constitutional correlates. \emph{Science}, 194, 732-734.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition.  New York: Wiley, Section 7.1.}
 \examples{
-data(brains)
+head(brains)
 }
 \keyword{datasets}

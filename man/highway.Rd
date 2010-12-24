@@ -50,6 +50,6 @@ The data comes from a unpublished master's paper by Carl Hoffstedt. They relate 
 \source{Carl Hoffstedt}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 7.2.}
 \examples{
-data(highway)
+head(highway)
 }
 \keyword{datasets}

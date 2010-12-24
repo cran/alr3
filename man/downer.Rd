@@ -53,6 +53,6 @@ tests to predict recovery in periparturient recumbent cows.
 \emph{NZ Veterinary Journal}, 35, 126-133.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 12.1.}
 \examples{
-data(downer)
+head(downer)
 }
 \keyword{datasets}

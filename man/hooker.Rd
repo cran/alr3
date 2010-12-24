@@ -19,6 +19,6 @@ Measured air pressure, inches of Mercury.
 \source{Forbes, J. (1957). Further experiments and remarks on the measurement of heights by boiling point of water. \emph{Transactions of the Royal Society of Edinburgh}, 21, 235-243.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 2.2.4.}
 \examples{
-data(hooker)
+head(hooker)
 }
 \keyword{datasets}

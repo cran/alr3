@@ -23,6 +23,6 @@ midnight and 6 AM.
 \source{R. Hutchinson}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 1.4.}
 \examples{
-data(oldfaith)
+head(oldfaith)
 }
 \keyword{datasets}

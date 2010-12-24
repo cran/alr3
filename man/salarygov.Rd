@@ -30,6 +30,6 @@ female employees, and the name of the class.
 \source{Sanford Weisberg}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 7.3.}
 \examples{
-data(salarygov)
+head(salarygov)
 }
 \keyword{datasets}

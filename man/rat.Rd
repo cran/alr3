@@ -29,9 +29,6 @@ of the predictors.
 \source{Dennis Cook}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 9.2.3.}
 \examples{
-data(rat)
-pairs(rat)
-summary(m1 <- lm(y~BodyWt+LiverWt+Dose, data=rat))
-inf.index(m1)
+head(rat)
 }
 \keyword{datasets}

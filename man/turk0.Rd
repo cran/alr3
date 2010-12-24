@@ -20,6 +20,6 @@ varied.
 \source{Cook, R. D. and Witmer, J. (1985). A note on the parameter-effects curvature. \emph{Journal of the American Statistical Association}, 80, 872-878.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.13.}
 \examples{
-data(turk0)
+head(turk0)
 }
 \keyword{datasets}

@@ -31,6 +31,6 @@ Maximum weight
 \source{Stephen Stigler}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 5.6.}
 \examples{
-data(jevons)
+head(jevons)
 }
 \keyword{datasets}

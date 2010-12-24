@@ -5,7 +5,6 @@
 \description{
 Results of a small experiment to learn about the effects of small electric shocks on dairy cows.
 }
-\usage{data(shocks)}
 \format{
   A data frame with 6 observations on the following 3 variables.
   \describe{
@@ -19,6 +18,6 @@ Results of a small experiment to learn about the effects of small electric shock
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 12.3.}
 \examples{
-data(shocks)
+head(shocks)
 }
 \keyword{datasets}

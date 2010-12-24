@@ -21,6 +21,6 @@ The variable month is the month number.
 \source{Kenneth G. Hubbard}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 1.2.}
 \examples{
-data(Mitchell)
+head(Mitchell)
 }
 \keyword{datasets}

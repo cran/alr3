@@ -36,6 +36,6 @@ It contains the following columns:
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 7.7.
 }
 \examples{
-data(UN3)
+head(UN3)
 }
 \keyword{datasets}

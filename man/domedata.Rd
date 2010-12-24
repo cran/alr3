@@ -9,7 +9,6 @@ in the Minneapolis metrodome can effect the distance travelled by a baseball.  T
 were collected in April 2003.  The experiment was repeated in May 2003 and domedata1 gives the
 combined data from the two experiments.
 }
-\usage{data(domedata1)}
 \format{
   A data frame with 96 observations on the following 7 variables.
   \describe{
@@ -28,6 +27,6 @@ combined data from the two experiments.
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.21.}
 \examples{
-data(domedata1)
+head(domedata1)
 }
 \keyword{datasets}

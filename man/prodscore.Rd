@@ -31,6 +31,6 @@ Tax year, either 1981 or 1982.
 \source{Douglas Tiffany}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.9.}
 \examples{
-data(prodscore)
+head(prodscore)
 }
 \keyword{datasets}

@@ -37,6 +37,6 @@ Donner Party.} Logan, UT: Utah State University Press,
 \url{http://www.metrogourmet.com/crossroads/KJhome.htm}.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 12.4.}
 \examples{
-data(donner)
+head(donner)
 }
 \keyword{datasets}

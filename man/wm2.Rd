@@ -8,7 +8,6 @@ site, in Northern South Dakota.
 Data collected every six hours for all of 2002, except that all of the month
 of May and a few other observations missing.
 }
-\usage{data(wm2)}
 \format{
   A data frame with 1116 observations on the following 5 variables.
   \describe{
@@ -25,6 +24,6 @@ Mark Ahlstrom and Rolf Miller, WindLogics, Inc.
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.8.}
 \examples{
-data(wm2)
+head(wm2)
 }
 \keyword{datasets}

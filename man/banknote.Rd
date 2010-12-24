@@ -35,6 +35,6 @@ Swiss banknotes and 100 counterfeit ones.
 Flury, B. and Riedwyl, H. (1988). \emph{Multivariate Statistics: A practical approach.} London: Chapman & Hall.}
 \references{Weisberg, S. (2005).  \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 12.5.}
 \examples{
-data(banknote)
+head(banknote)
 }
 \keyword{datasets}

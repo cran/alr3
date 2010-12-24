@@ -27,6 +27,6 @@ The data were collected by Douglas Tiffany to study the variation in rent paid i
 \source{Douglas Tiffany}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 9.12.}
 \examples{
-data(landrent)
+head(landrent)
 }
 \keyword{datasets}

@@ -46,6 +46,6 @@ at a site near Bishop, California.
 Source:  http://www.stat.ucla.edu.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 1.5.}
 \examples{
-data(dwp)
+head(water)
 }
 \keyword{datasets}

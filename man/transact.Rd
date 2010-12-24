@@ -25,6 +25,6 @@ Cunningham, R. and Heathcote, C.
 Australian Journal of Statistics, 31,12-17.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 4.6.1.}
 \examples{
-data(transact)
+head(transact)
 }
 \keyword{datasets}

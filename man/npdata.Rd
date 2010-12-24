@@ -5,7 +5,6 @@
 \description{
  Catch per unit effort data for 16 Minnesota lakes
 }
-\usage{data(npdata)}
 \format{
   A data frame with 16 observations on the following 4 variables.
   \describe{
@@ -21,6 +20,6 @@ R. Pierce, Minnesota Dept. of Natural Resources
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 4.6.3.}
 \examples{
-data(npdata)
+head(npdata)
 }
 \keyword{datasets}

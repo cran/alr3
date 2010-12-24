@@ -1,49 +1,35 @@
-################ April fools day, 2008
-export(alrweb)
-export(alrprimer)
-export(alrerrata)
-export(sigma.hat)
-export(conf.intervals )
-export(next.boot )
-export(boot.case )
-export(pure.error.anova)
-export(delta.method)
+################ February 2010
+export(alrWeb)
+export(pureErrorAnova)
+export(randomLinComb)
 export(pod)
 export(pod.formula)
-export(powtran)
-export(inv.tran.plot )
-export(inv.tran.estimate) 
-export(inverse.response.plot) 
-export(inv.res.plot )
-export(bctrans )
-export(bctrans1)
-export(lrt.bctrans)
-export(resid.curv.test)
-export(tukey.nonadd.test )
-export(resplot )
-export(residual.plots)
-export(mmp)
-export(mmps)
-export(inf.index)
-export(outlier.t.test)
-export(random.lin.comb)
 
-S3method(sigma.hat, default)
-S3method(sigma.hat, glm)
-S3method(next.boot, default)
-S3method(next.boot, nls)
-S3method(boot.case, default)
-S3method(pure.error.anova, lm)
-S3method(delta.method, default)
-S3method(delta.method, lm)
-S3method(delta.method, nls)
-S3method(delta.method, lmList)
-S3method(delta.method, nlsList)
-S3method(delta.method, lme)
-S3method(delta.method, nlme)
-S3method(delta.method, mer)
-S3method(delta.method, multinom)
-S3method(delta.method, polr)
+# decprecated
+export(
+	sigma.hat,
+	conf.intervals,
+	boot.case,
+	pure.error.anova,
+	delta.method,
+	powtran,
+	inv.tran.plot,
+	inv.tran.estimate,
+	inverse.response.plot,
+	inv.res.plot,
+	bctrans,
+	lrt.bctrans,
+	resid.curv.test,
+	tukey.nonadd.test,
+	resplot,
+	residual.plots,
+	marginal.model.plot,
+	marginal.model.plots,
+	inf.index,
+	outlier.t.test
+)
+
+S3method(pureErrorAnova, lm)
 S3method(pod, lm)
 S3method(formula,pod)
 S3method(print, pod)
@@ -57,21 +43,6 @@ S3method(df.residual, pod)
 S3method(predict, pod)
 S3method(plot, pod)
 S3method(anova, pod)
-S3method(powtran, default)
-S3method(powtran, matrix)
-S3method(powtran, bctrans)
-S3method(powtran, data.frame)
-S3method(inverse.response.plot, default)
-S3method(plot,bctrans)
-S3method(print,bctrans)
-S3method(summary,bctrans)
-S3method(coef,bctrans)
-S3method(vcov,bctrans)
-S3method(residual.plots, lm)
-S3method(mmp, lm)
-S3method(mmp, glm)
-S3method(inf.index, lm)
-S3method(outlier.t.test, default)
-S3method(random.lin.comb, default)
-S3method(random.lin.comb, lm)
+S3method(randomLinComb, default)
+S3method(randomLinComb, lm)
 

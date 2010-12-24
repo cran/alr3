@@ -30,7 +30,7 @@ RP= red pine, RM= red maple, BA = black ash, A= aspen.
 }
 \source{Roy Rich}
 \examples{
-data(blowBF)
+head(blowBF)
 }
 \references{
 S. Weisberg (2005).  \emph{Applied Linear Regression}, third edition.  New York:  Wiley.

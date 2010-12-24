@@ -24,6 +24,6 @@ R. D. Cook and S. Weisberg (1999), Graphs in statistical analysis:  Is
 the medium the message? \emph{American Statistician,}  53, 29-37.}
 \references{Weirsbeg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 8.1.5.}
 \examples{
-data(caution)
+head(caution)
 }
 \keyword{datasets}

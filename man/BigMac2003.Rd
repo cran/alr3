@@ -46,6 +46,6 @@ contains the following columns:
 the Globe} (2003 version), from \url{http://www.ubs.com/1/e/ubs_ch/wealth_mgmt_ch/research.html}.}
 \references{Weisberg, S. (2005).  \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 7.5.}
 \examples{
-data(BigMac2003)
+head(BigMac2003)
 }
 \keyword{datasets}

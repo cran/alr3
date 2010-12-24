@@ -22,6 +22,6 @@ The given data are IQ scores from identical twins; one raised in a foster home, 
 \source{Burt, C. (1966). The genetic estimation of differences in intelligence: A study of monozygotic twins reared together and apart. \emph{Br. J. Psych.}, 57, 147-153.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.16.}
 \examples{
-data(twins)
+head(twins)
 }
 \keyword{datasets}

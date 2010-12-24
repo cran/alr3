@@ -13,7 +13,6 @@ The file \code{ufc} contains all the data.
 \code{ufcwc} contains only Western red cedar.
 \code{ufcgf} contains only grand fir.
 }
-\usage{data(ufcgf)}
 \format{
   A data frame with the following 5 variables.
   \describe{
@@ -38,6 +37,6 @@ Andrew Robinson
 Weisberg, S. (2005). \emph{Applied Linear Regression}, third edition.  New
 York:  Wiley.}
 \examples{
-data(ufcgf)
+head(ufcgf)
 }
 \keyword{datasets}

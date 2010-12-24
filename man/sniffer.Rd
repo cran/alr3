@@ -28,6 +28,6 @@ When gasoline is pumped into a tank, hydrocarbon vapors are forced out and into 
 \source{John Rice}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 8.3.2.}
 \examples{
-data(sniffer)
+head(sniffer)
 }
 \keyword{datasets}

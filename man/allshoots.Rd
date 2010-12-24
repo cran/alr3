@@ -36,6 +36,6 @@ Ph. D. dissertation, University of Minnesota, St. Paul, Minnesota.}
 New York: Wiley, Section 5.3.}
 
 \examples{
-data(longshoots)
+head(longshoots)
 }
 \keyword{datasets}

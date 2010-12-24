@@ -49,6 +49,6 @@ of characteristics of each lake.  There are missing values.
 richness, \emph{Limnology and Oceanography}, 37, 848--856.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 8.12.}
 \examples{
-data(lakes)
+head(lakes)
 }
 \keyword{datasets}

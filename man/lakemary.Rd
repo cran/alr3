@@ -25,6 +25,6 @@ in S. Weisberg (1986), A linear model approach to the backcalculation of
 fish length, \emph{J. Amer. Statist. Assoc.}, 81, 922-929.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 11.2.1.}
 \examples{
-data(lakemary)
+head(lakemary)
 }
 \keyword{datasets}

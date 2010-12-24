@@ -22,6 +22,6 @@ Oregon.}
 
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 2.7.3.}
 \examples{
-data(snake)
+head(snake)
 }
 \keyword{datasets}

@@ -47,6 +47,6 @@ Mammals: Ecological and Constitutional Correlates
 \emph{Science}, vol. 194, pp. 732-734.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 6.2.}
 \examples{
-data(sleep1)
+head(sleep1)
 }
 \keyword{datasets}

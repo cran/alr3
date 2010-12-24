@@ -7,7 +7,8 @@ Data on motor fuel consumption and related variables, for the year 2001.
 The unit is a state in the
 United States or the District of Columbia.  Data are for 2001, unless noted.
 }
-\format{This data frame contains the following columns:
+\format{This data frame contains the following columns.  Row 
+labels are the two-digit US Postal abbreviations for the US states.
  \describe{
     \item{Drivers}{
  Number of Licensed drivers in the state
@@ -30,24 +31,24 @@ United States or the District of Columbia.  Data are for 2001, unless noted.
     \item{Tax}{
  Gasoline state tax rate, cents per gallon
     }
-    \item{State}{
- State name
-    }
  }
 }
 \source{
-http://www.fhwa.dot.gov/ohim/hs01/index.htm}
+\url{http://www.fhwa.dot.gov/ohim/hs01/index.htm}
+}
 
 \references{
 Weisberg, S. (2005). \emph{Applied Linear Regression}, third edition.  New
 York:  Wiley.}
 
 \examples{
-data(fuel2001)
-fuel2001$Dlic <- 1000*fuel2001$Drivers/fuel2001$Pop
-fuel2001$Fuel <- 1000*fuel2001$FuelC/fuel2001$Pop
-fuel2001$Income <- fuel2001$Income/1000
-fuel2001$logMiles <- log(fuel2001$Miles,2)
-pairs(Fuel~Tax+Dlic+Income+logMiles,data=fuel2001)
+head(fuel2001)
+# Most of the examples in ALR3 that use these data first 
+# transform several of the columns
+fuel2001 <- transform(fuel2001,
+     Dlic=1000 * Drivers/Pop,
+     Fuel=1000 * FuelC/Pop,
+     Income=Income/1000)
+pairs(Fuel~Tax + Dlic + Income + log2(Miles), data=fuel2001)
 }
 \keyword{datasets}

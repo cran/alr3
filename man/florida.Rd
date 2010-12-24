@@ -5,7 +5,6 @@
 \description{
 County-by-county vote for president in Florida in 2000 for Bush, Gore and Buchanan.
 }
-\usage{data(florida)}
 \format{
   A data frame three vaiaables for each of Florida's 67 counties.
   \describe{
@@ -21,7 +20,7 @@ http://www.abcnews.go.com.sections/politics/2000vote/general/FL\_county.html
 Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 9.10.
 }
 \examples{
-data(florida)
+head(florida)
 ## maybe str(florida) ; plot(florida) ...
 }
 \keyword{datasets}

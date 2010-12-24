@@ -22,6 +22,6 @@ Counts of flocks of snow geese.
 \source{Dennis Cook}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 5.5.}
 \examples{
-data(snowgeese)
+head(snowgeese)
 }
 \keyword{datasets}

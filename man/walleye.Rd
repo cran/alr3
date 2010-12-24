@@ -6,7 +6,6 @@
 These data give length and age for over 3000 walleye (a type of fish) captured in Butternut
 Lake, Wisconsin, in three periods with different management method in place.
 }
-\usage{data(walleye)}
 \format{
   A data frame with 3198 observations on the following 3 variables.
   \describe{
@@ -20,6 +19,6 @@ Michelle LeBeau
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 11.3.}
 \examples{
-data(walleye)
+head(walleye)
 }
 \keyword{datasets}

@@ -6,7 +6,6 @@
 Log catch per unit effect of 200 mm or longer black crappies was recored 27 times over the course
 of 1996 on Swan Lake, Minnesota.
 }
-\usage{data(swan96)}
 \format{
   A data frame with 27 observations on the following 2 variables.
   \describe{
@@ -20,6 +19,6 @@ Minnesota Department of Natural Resources
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 11.4.}
 \examples{
-data(swan96)
+head(swan96)
 }
 \keyword{datasets}

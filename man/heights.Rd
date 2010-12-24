@@ -28,6 +28,6 @@ in man, \emph{Biometrika}, 2, 357--463, Table 31.
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 1.1.}
 \examples{
-data(pearlee1)
+head(heights)
 }
 \keyword{datasets}

@@ -5,7 +5,6 @@
 \description{
   World record times for the mile run, 1861--2003.
 }
-\usage{data(mile)}
 \format{
   A data frame with 46 observations:
   \describe{
@@ -24,6 +23,6 @@ http://www.saunalahti.fi/~sut/eng/
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.20.}
 \examples{
-data(mile)
+head(mile)
 }
 \keyword{datasets}

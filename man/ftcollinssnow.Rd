@@ -22,6 +22,6 @@ January to June snowfall, inches
 \source{http://www.ulysses.atmos.colostate.edu}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 1.1.}
 \examples{
-data(ftcollinssnow)
+head(ftcollinssnow)
 }
 \keyword{datasets}

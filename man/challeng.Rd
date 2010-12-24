@@ -42,6 +42,6 @@ See also Tufte, E. R. (1997), \emph{Visual and statistical Thinking:  Displays o
 evidence for making decisions}, Cheshire, CT:  Graphics Press.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 12.6.}
 \examples{
-data(challeng)
+head(challeng)
 }
 \keyword{datasets}

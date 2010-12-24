@@ -35,6 +35,6 @@ Publishing.  Taken from the \emph{Journal on Statistical Education Archive},
 submitted by rdawson@husky1.stmarys.ca.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 12.2.4.}
 \examples{
-data(titanic)
+head(titanic)
 }
 \keyword{datasets}

@@ -6,7 +6,6 @@
 For the windspeed data in the file \code{wm2}, this is the number of observations in each of the 
 bins, and the average windspeed in that bin
 }
-\usage{data(wm3)}
 \format{
   A data frame with 16 observations on the following 2 variables.
   \describe{
@@ -17,6 +16,6 @@ bins, and the average windspeed in that bin
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.8.2.
 }
 \examples{
-data(wm3)
+head(wm3)
 }
 \keyword{datasets}

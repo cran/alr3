@@ -19,6 +19,6 @@ Ezekiel and Fox (1959) data on auto stopping distances.
 \source{Ezekiel, M. and Fox, K. A. (1959). \emph{Methods of Correlation Analysis, Linear and Curvilinear}, New York: Wiley.}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.2.}
 \examples{
-data(stopping)
+head(stopping)
 }
 \keyword{datasets}

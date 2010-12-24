@@ -2,7 +2,6 @@
 \alias{UN2}
 \docType{data}
 \title{ National statistics from the United Nations }
-\usage{data(UN2)}
 \description{
 National health, welfare, and education statistics for 193
 places, mostly UN members, but also other areas like Hong Kong that are not
@@ -31,6 +30,6 @@ The file contains the following columns:
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 3.1.
 }
 \examples{
-data(UN2)
+head(UN2)
 }
 \keyword{datasets}

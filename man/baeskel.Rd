@@ -21,6 +21,6 @@ surface tension of liquid copper.  \emph{J. Metals}, 5, 643-648.}
 \references{Weisberg, S. (2005).  \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 7.4}
 
 \examples{
-data(baeskel)
+head(baeskel)
 }
 \keyword{datasets}

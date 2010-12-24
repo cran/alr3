@@ -31,6 +31,6 @@ Salary of faculty in a small Midwestern college in the early 1980s.
 \source{Sanford Weisberg}
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 6.10.}
 \examples{
-data(salary)
+head(salary)
 }
 \keyword{datasets}

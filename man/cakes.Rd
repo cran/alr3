@@ -5,7 +5,6 @@
 \description{
 Oehlert (2000, Example 19.3) provides data from a small experiment on baking packaged cake mixes.
 }
-\usage{data(cakes)}
 \format{
   A data frame with 14 observations on the following 4 variables.
   \describe{
@@ -23,7 +22,7 @@ Oehlert (2000, Example 19.3) provides data from a small experiment on baking pac
 Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Section 6.1.1.  
 }
 \examples{
-data(cakes)
+head(cakes)
 lm(Y~X1+X2+I(X1^2)+I(X2^2)+X1:X2, data=cakes)
 
 }

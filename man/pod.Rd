@@ -178,7 +178,7 @@ Wiley.}
 
 \seealso{See Also \code{\link{nls}}, \code{\link{lm}}, \code{\link{nls.control}} }
 \examples{
-data(ais)
+head(ais)
 m1 <- pod(LBM ~ Ht + Wt + RCC, data= ais, group= Sex)
 anova(m1) # compare four models
 plot(m1) # draw the plot

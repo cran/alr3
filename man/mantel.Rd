@@ -6,7 +6,6 @@
   An artificial data set suggested by N. Mantel to illustrate stepwise
   regression methods.
 }
-\usage{data(mantel)}
 \format{
   A data frame with 5 observations on the following 4 variables.
   \describe{
@@ -23,6 +22,6 @@ Why stepdown procedures in variable selection?
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 10.2.}
 \examples{
-data(mantel)
+head(mantel)
 }
 \keyword{datasets}
