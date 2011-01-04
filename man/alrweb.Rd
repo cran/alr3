@@ -17,8 +17,9 @@ alrWeb(page = c("webpage", "errata", "primer"), script)
   \item{script}{If set, this will open an R script for one of the chapters
           in the book in a browser window, or a script from one of the
           chapters in the R Primer.  Possible values are "chapter1",
-          "chapter2", ... "chapter12" for chapters from the book, or
-          "primer0", "primer1", ... "primer12", or and "primerappendix"
+          "chapter2", ... "chapter12", "appendix" for chapters and
+          appendix from the book, or
+          "primer0", "primer1", ... "primer12", "primerappendix"
           for material corresponding to the R primer.} 
 }
 

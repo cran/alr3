@@ -50,7 +50,7 @@ pod (x, ...)
     
 \method{anova}{pod}(object,scale=0,test="F",...)
 
-\method{plot}{pod}(x, colors=rainbow(nlevels(x$group)),
+\method{plot}{pod}(x, colors=1:nlevels(x$group),
   pch=1:nlevels(x$group),key="topleft",identify=FALSE,
   xlab="Linear Predictor", ylab=as.character(c(formula(x)[[2]])),
   ...)
@@ -63,7 +63,7 @@ pod (x, ...)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{formula}{A linear regression formula, as used in lm, or the results of a
-call to pod.  See details below.}
+call to pod or a lm fit.  See details below.}
   \item{x}{The result of a lm fit from which the formula and the
 arguments data, subset, weights, na.action, singular.ok, contrasts and offset will
 be taken.}
@@ -111,14 +111,15 @@ key interactively by clicking on the plot.}
   \item{ylab}{Vertical label, optional}
 }
 \details{
-Suppose we start with a linear mean function specified by \code{y~x1+x2+x3}, where the
-right-side variables can be any valid R variables, such as transformations, but NOT
+Suppose we start with a linear mean function specified by \code{y ~ x1 + x2 + x3}, 
+where the right-side variables can be any valid R variables, such as 
+transformations, but NOT
 factors or interactions (if you want to include these, you need to create the
 dummy variables yourself).  The right-hand side variables must also be linearly
 independent.  We also specify a grouping variable z with, say, g levels.  Let 
 \eqn{G_i}{Gi} be a dummy variable with values equal to 1 when \eqn{z=i}, and 
 zero otherwise.  The pod mean function is then has the nonlinear mean function
-\deqn{E(y|x,z) = \beta_0+\beta'x + \sum_{j=2}^g G_j(\theta_{0j}+\theta_{ij}\beta'x)}{
+\deqn{E(y|x,z) = \beta_0 + \beta'x + \sum_{j=2}^g G_j(\theta_{0j} + \theta_{ij}\beta'x)}{
 b0+ b'x + sum(j=2,g) Gj(th0j + th1j(b'x))}
 This is a nonlinear mean function that specifies that the response depends on the predictors
 only through one linear combination, that the dependence is linear, but the slope
@@ -126,7 +127,7 @@ and intercept may be different for each group.
 
 The pod mean function is easily fit using \code{nls}.  For example, if z has two levels,
 a nonlinear mean function that would work is
-\code{y~b0+b1*x1+b2*x2+b3*x3+G2*(th02+th12*(b1*x1+b2*x2+b3*x3))}.
+\code{y ~ b0 + b1*x1 + b2*x2 + b3*x3 + G2*(th02 + th12*(b1*x1 + b2*x2 + b3*x3))}.
 Starting values can be determined by fitting the parallel mean function, for this is a
 linear mean function and easily fit.
 
@@ -183,7 +184,7 @@ m1 <- pod(LBM ~ Ht + Wt + RCC, data= ais, group= Sex)
 anova(m1) # compare four models
 plot(m1) # draw the plot
 m2 <- update(m1, mean.function="parallel")
-plot(m2,key=c(55,95))
+plot(m2)
 }
 \keyword{ models }% at least one, from doc/KEYWORDS
 \keyword{ regression}

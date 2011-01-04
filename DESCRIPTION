@@ -1,9 +1,9 @@
 Package: alr3
-Version: 2.0.1
-Date: 201/12/27
+Version: 2.0.2
+Date: 2011/01/04
 Title: Data to accompany Applied Linear Regression 3rd edition
-Author: Sanford Weisberg <sandy@stat.umn.edu>
-Maintainer: Sanford Weisberg <sandy@stat.umn.edu>
+Author: Sanford Weisberg <sandy@umn.edu>
+Maintainer: Sanford Weisberg <sandy@umn.edu>
 Depends: R (>= 2.1.1), car
 LazyData: yes
 LazyLoad: no
@@ -17,6 +17,6 @@ Description: This package is a companion to the textbook S. Weisberg
         to make some data columns row labels.
 License: GPL (>= 2)
 URL: http://www.r-project.org, http://www.stat.umn.edu/alr
-Packaged: 2010-12-27 17:15:56 UTC; sandy
+Packaged: 2011-01-04 19:36:26 UTC; sandy
 Repository: CRAN
-Date/Publication: 2011-01-03 12:33:48
+Date/Publication: 2011-01-05 06:25:12
