@@ -3,7 +3,7 @@ citHeader("To cite the alr3 package in publications use:")
 citEntry(entry = "Book",
   title        = "Applied Linear Regression",
   edition	   = "Third",
-  author       = personList(as.person("Sandford Weisberg")),
+  author       = personList(as.person("Sanford Weisberg")),
   year         = "2005",
   publisher    = "Wiley",
   address      = "Hoboken {NJ}",
