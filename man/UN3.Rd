@@ -3,35 +3,47 @@
 \docType{data}
 \title{ National statistics from the United Nations }
 \description{
-National health, welfare, and education statistics for 127
+National health, welfare, and education statistics for 210
 places, mostly UN members, but also other areas like Hong Kong that are not
-independent countries.  Localities with missing data have been removed from this
-data set.
+independent countries.  Only 125 localities have data present for all the variables.
 }
 \format{
   This data frame uses locality name as row labels.
-  In some cases, the geographic area is
-    smaller than a country; for example, Hong Kong.
 It contains the following columns:
   \describe{
     \item{ModernC}{Percent of unmarried women using a modern method of
-    contraception}
-    \item{Change}{Annual population growth rate, percent}
-    \item{PPgdp}{Per capita 2001 GDP, in US \$}
-    \item{Frate}{Percent of females over age 15 economically active}
-    \item{Pop}{Population, thousands}
+    contraception.}
+    \item{Change}{Annual population growth rate, percent.}
+    \item{PPgdp}{Per capita 2001 GDP, in US \$.}
+    \item{Frate}{Percent of females over age 15 economically active.}
+    \item{Pop}{Population, thousands.}
     \item{Fertility}{Expected number of live births per female, 2000}
     \item{Purban}{Percent of population that is urban, 2001}
-  }
-}
+}}
 \details{
- These data were collected at published by the UN from a variety of sources.
+ These data were collected 2000-2003 and published by the UN from a variety of sources.
  See original source for additional footnotes concerning values for
- individual countries.  Locality names are given in the first column of the
- data file.
+ individual countries.  Missing values in the data file indicated values
+ for which no data is available, and will generally occur in less-developed 
+ localities.  
 }
 \source{
- \url{http://unstats.un.org/unsd/demographic}
+More recent values for these variables can be obtained from the following 
+web pages:
+(1) \code{ModernC}: 
+\url{http://unstats.un.org/unsd/demographic/products/socind/contraceptive.htm};
+(2) \code{change}: 
+\url{http://unstats.un.org/unsd/demographic/products/socind/population.htm};
+(3) \code{PPgdp}:
+\url{http://unstats.un.org/unsd/demographic/products/socind/inc-eco.htm};
+(4) \code{Frate}:  
+\url{http://unstats.un.org/unsd/demographic/products/socind/inc-eco.htm};
+(5) \code{Pop}:
+\url{http://unstats.un.org/unsd/demographic/products/socind/population.htm};
+(6) \code{Fertility}:
+\url{http://unstats.un.org/unsd/demographic/products/indwm/tab2c.htm};
+(7) \code{Purban}:
+\url{http://unstats.un.org/unsd/demographic/products/socind/hum-sets.htm}.
 }
 \references{Weisberg, S. (2005). \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 7.7.
 }

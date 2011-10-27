@@ -1,6 +1,5 @@
-Changes to Version 2.0.3
-
-None yet.
+Changes to Version 2.0.5
+       o Documentation for UN3 updated.  Minor changes for compatability with R 2.14.
 
 Changes to Version 2.0.2
        o A correction was made to the NAMESPACE.
