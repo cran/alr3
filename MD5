@@ -1,7 +1,6 @@
-96ad83e33b0d2cadf1a4b8f36d917df7 *DESCRIPTION
-16d26660126c7673fd8b0a06ac622f08 *NAMESPACE
-acbed2f0e8305ce192d8b848aa6f168b *NEWS
-340ed83516c7770d52ee94ae3afeff08 *R/alr3-deprecated.R
+93dd48a9ea1d7cf1a4730f3fa3791fb8 *DESCRIPTION
+fb0bb24e8cae82bbe9f96458bd5fee97 *NAMESPACE
+b90c5e11f67ffe4ca7d3c378f6affcc1 *R/alr3-deprecated.R
 8eadd3cd14720419a41a5bcd2b24f32b *R/alr3.R
 90c365e02d46f86cc77825320e0102a8 *R/alrWeb.R
 122db28dcfd41332e2c650e48417147e *R/zzz.R
@@ -174,7 +173,7 @@ a0241d9b0443d94ca8402ed5b7ed7bdd *inst/extdata/wm3.txt
 bf9474e9964a7554479c2e007c14870a *inst/extdata/wm4.txt
 e973aca869912499cc560baff0fc539e *inst/extdata/wool.txt
 58db43d3a2aeabc104ef20f2474aee20 *man/BGSall.Rd
-380349fee16f805211d233edcbce4066 *man/BigMac2003.Rd
+07d8e55d2b1eddce903fb4107682f996 *man/BigMac2003.Rd
 c17c5056c21e874cd1ded051560166ae *man/MWwords.Rd
 fe23212708619a7826f9ad2ae581b66f *man/Mitchell.Rd
 b082926a7444d6fa62861f3ae9b06446 *man/UN1.Rd
@@ -182,8 +181,8 @@ b082926a7444d6fa62861f3ae9b06446 *man/UN1.Rd
 d37d616c11bd31e3ad93060a19e8d0fa *man/UN3.Rd
 f82949c2207991c280b8cad54e93d37d *man/ais.Rd
 67f565b523a804ef77c8b0f2ec9da36b *man/allshoots.Rd
-3de4fb4d7c38976feddd73fec99349e4 *man/alr3-deprecated.Rd
-60a71d265c6cee744822ce7527396a8c *man/alr3-package.Rd
+1b5e4eb2dcd7a5b19132aa701c978208 *man/alr3-deprecated.Rd
+6713b2c77b07d64a38abf9f484f6a125 *man/alr3-package.Rd
 e6a89c9686b442b5a324b51499ad3c33 *man/alrWeb.Rd
 5a87d9202815d6344bfd3d1ed0b96c99 *man/baeskel.Rd
 7256f703e99bba9c7c51d8cc022fed54 *man/banknote.Rd

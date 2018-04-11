@@ -10,7 +10,7 @@ Prices in many world cities from a
 contains the following columns:
  \describe{
     \item{BigMac}{
- Minutes of labor to purchase a Big Mac 
+ Minutes of labor to purchase a Big Mac
     }
     \item{Bread}{
  Minutes of labor to purchase 1 kg of bread
@@ -43,7 +43,8 @@ contains the following columns:
 }
 
 \source{Union Bank of Switzerland report, \emph{Prices and Earnings Around
-the Globe} (2003 version), from \url{http://www.ubs.com/1/e/ubs_ch/wealth_mgmt_ch/research.html}.}
+the Globe} (2003 version).  The 2015 edition is available from \url{https://www.ubs.com/microsites/prices-earnings/prices-earnings.html}.}
+
 \references{Weisberg, S. (2005).  \emph{Applied Linear Regression}, 3rd edition. New York: Wiley, Problem 7.5.}
 \examples{
 head(BigMac2003)

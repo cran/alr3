@@ -5,9 +5,19 @@ export(randomLinComb)
 export(pod)
 export(pod.formula)
 
+import("car")
+
+importFrom("graphics", "abline", "legend", "locator", "plot")
+importFrom("stats", "anova", "as.formula", "coef", "confint",
+             "deviance", "df.residual", "fitted", "formula", "lm",
+             "model.matrix", "nls", "nls.control", "pf", "predict",
+             "resid", "residuals", "rnorm", "sd", "stat.anova", "update",
+             "vcov", "weights")
+importFrom("utils", "browseURL")
+
 # decprecated
 export(
-	sigma.hat,
+#	sigma.hat,
 	conf.intervals,
 	boot.case,
 	pure.error.anova,
@@ -19,8 +29,8 @@ export(
 	inv.res.plot,
 	bctrans, bctrans1,
 	lrt.bctrans,
-	resid.curv.test,
-	tukey.nonadd.test,
+#	resid.curv.test,
+#	tukey.nonadd.test,
 	resplot,
 	residual.plots,
 	marginal.model.plot,
@@ -31,6 +41,7 @@ export(
 
 S3method(pureErrorAnova, lm)
 S3method(pod, lm)
+S3method(pod,formula)
 S3method(formula,pod)
 S3method(print, pod)
 S3method(summary, pod)
@@ -41,7 +52,7 @@ S3method(residuals, pod)
 S3method(fitted, pod)
 S3method(df.residual, pod)
 S3method(predict, pod)
-S3method(plot, pod) 
+S3method(plot, pod)
 S3method(plot, pod.lm)
 S3method(anova, pod)
 S3method(randomLinComb, default)
