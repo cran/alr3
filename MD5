@@ -1,7 +1,7 @@
-93dd48a9ea1d7cf1a4730f3fa3791fb8 *DESCRIPTION
+8e4fa487492a144b6ec54c36d736d095 *DESCRIPTION
 fb0bb24e8cae82bbe9f96458bd5fee97 *NAMESPACE
 b90c5e11f67ffe4ca7d3c378f6affcc1 *R/alr3-deprecated.R
-8eadd3cd14720419a41a5bcd2b24f32b *R/alr3.R
+370c1bdfcb913b5be5db5f7999c619f6 *R/alr3.R
 90c365e02d46f86cc77825320e0102a8 *R/alrWeb.R
 122db28dcfd41332e2c650e48417147e *R/zzz.R
 2316bbe324ef85b54ae5a0753e4743f6 *data/BGSall.rda
@@ -182,7 +182,6 @@ d37d616c11bd31e3ad93060a19e8d0fa *man/UN3.Rd
 f82949c2207991c280b8cad54e93d37d *man/ais.Rd
 67f565b523a804ef77c8b0f2ec9da36b *man/allshoots.Rd
 1b5e4eb2dcd7a5b19132aa701c978208 *man/alr3-deprecated.Rd
-6713b2c77b07d64a38abf9f484f6a125 *man/alr3-package.Rd
 e6a89c9686b442b5a324b51499ad3c33 *man/alrWeb.Rd
 5a87d9202815d6344bfd3d1ed0b96c99 *man/baeskel.Rd
 7256f703e99bba9c7c51d8cc022fed54 *man/banknote.Rd
